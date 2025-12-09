@@ -207,7 +207,7 @@
       color:var(--rojo-osc);
     }
 
-    /* RESUMEN */
+    /* RESUMEN GENERAL */
     .resumen{
       display:flex;
       flex-wrap:wrap;
@@ -301,7 +301,6 @@
       text-align:center;
       color:var(--texto-suave);
     }
-
     .vuelta-total{
       font-size:0.9rem;
       font-weight:700;
@@ -309,7 +308,6 @@
     .vuelta-total span{
       color:var(--rojo-osc);
     }
-
     .vuelta-buttons{
       display:flex;
       flex-direction:column;
@@ -318,7 +316,6 @@
       font-size:0.78rem;
       color:var(--texto-suave);
     }
-
     .vuelta-body{
       margin-top:4px;
     }
@@ -358,7 +355,6 @@
     .col-taller{ min-width:180px; }
     .col-fletero{ width:130px; text-align:left; }
     .col-cant{ width:80px; text-align:center; }
-    .col-estado{ width:110px; text-align:center; }
     .col-obs{ min-width:200px; }
 
     .input-num{
@@ -416,6 +412,81 @@
     }
     .estado-tag{
       font-weight:600;
+    }
+
+    .estado-resumen{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:8px;
+    }
+    .estado-res-card{
+      flex:1 1 110px;
+      min-width:110px;
+      background:var(--card);
+      border-radius:8px;
+      border:1px solid var(--borde);
+      padding:6px 8px;
+      font-size:0.85rem;
+    }
+    .estado-res-label{
+      font-size:0.75rem;
+      text-transform:uppercase;
+      color:var(--texto-suave);
+    }
+    .estado-res-value{
+      font-size:1.1rem;
+      font-weight:700;
+    }
+
+    .estado-filtros{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:8px;
+      margin-bottom:8px;
+      font-size:0.85rem;
+    }
+    .estado-filtros label{
+      font-weight:600;
+      color:var(--texto-suave);
+    }
+    .estado-select{
+      padding:4px 6px;
+      border-radius:6px;
+      border:1px solid #d1d5db;
+      background:#ffffff;
+      font-size:0.85rem;
+    }
+
+    .estado-botones-masivo{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:8px;
+      font-size:0.8rem;
+    }
+    .estado-btn-masivo{
+      padding:4px 8px;
+      border-radius:6px;
+      border:1px solid var(--rojo);
+      background:#ffffff;
+      color:var(--rojo);
+      cursor:pointer;
+    }
+    .estado-btn-masivo:hover{
+      background:#fff5f5;
+    }
+
+    /* Colores filas por estado */
+    .estado-retiro{
+      background:#fff9d6 !important;
+    }
+    .estado-proceso{
+      background:#e0f2fe !important;
+    }
+    .estado-listo{
+      background:#dcfce7 !important;
     }
 
     /* PANEL ORDEN / IMPRESIÓN */
@@ -532,6 +603,9 @@
       .fleteros-actions,
       .vueltas,
       .estado-info,
+      .estado-resumen,
+      .estado-filtros,
+      .estado-botones-masivo,
       .splash-overlay{
         display:none !important;
       }
@@ -579,7 +653,7 @@
         font-size:0.8rem;
         height:30px;
       }
-      .col-fletero,.col-estado{
+      .col-fletero{
         width:110px;
       }
     }
@@ -747,13 +821,45 @@
     <!-- TAB ESTADO -->
     <section id="tab-estado" class="tab-panel">
       <section class="estado-info">
-        Acá solo ves los talleres que tienen cilindros cargados (cantidad &gt; 0) y podés cambiar el estado.
+        Solo aparecen talleres con cilindros cargados (cantidad &gt; 0).
         <br>
-        <span class="estado-tag">• En retiro:</span> el cilindro todavía está en el taller / en viaje.
+        <span class="estado-tag">• En retiro:</span> cilindros todavía en taller / en viaje.
         <br>
-        <span class="estado-tag">• Proceso:</span> cilindro ya en CRPC, en prueba / armado.
+        <span class="estado-tag">• Proceso:</span> cilindros en CRPC (prueba, armado, etc.).
         <br>
-        <span class="estado-tag">• Listo:</span> cilindro terminado, para entregar.
+        <span class="estado-tag">• Listo:</span> cilindros terminados para entregar.
+      </section>
+
+      <section class="estado-resumen">
+        <div class="estado-res-card">
+          <div class="estado-res-label">En retiro</div>
+          <div class="estado-res-value" id="estado-retiro-count">0</div>
+        </div>
+        <div class="estado-res-card">
+          <div class="estado-res-label">Proceso</div>
+          <div class="estado-res-value" id="estado-proceso-count">0</div>
+        </div>
+        <div class="estado-res-card">
+          <div class="estado-res-label">Listo</div>
+          <div class="estado-res-value" id="estado-listo-count">0</div>
+        </div>
+      </section>
+
+      <section class="estado-filtros">
+        <label for="estado-filtro-fletero">Fletero:</label>
+        <select id="estado-filtro-fletero" class="estado-select">
+          <option value="todos">Todos</option>
+          <option value="Agustin">Agustín</option>
+          <option value="Nano">Nano</option>
+          <option value="Rodrigo">Rodrigo</option>
+          <option value="Joaquin">Joaquín</option>
+        </select>
+        <span style="font-size:0.8rem;color:var(--texto-suave);">El filtro afecta la tabla y el resumen.</span>
+      </section>
+
+      <section class="estado-botones-masivo">
+        <button id="btn-estado-todos-proceso" class="estado-btn-masivo">Pasar todos a Proceso</button>
+        <button id="btn-estado-todos-listo" class="estado-btn-masivo">Pasar todos a Listo</button>
       </section>
 
       <div class="tabla-wrap">
@@ -930,6 +1036,14 @@
 
     const btnReset = document.getElementById("btn-reset");
 
+    // Estado resumen + filtros
+    const estadoRetiroCountEl = document.getElementById("estado-retiro-count");
+    const estadoProcesoCountEl = document.getElementById("estado-proceso-count");
+    const estadoListoCountEl = document.getElementById("estado-listo-count");
+    const estadoFiltroFletero = document.getElementById("estado-filtro-fletero");
+    const btnEstadoTodosProceso = document.getElementById("btn-estado-todos-proceso");
+    const btnEstadoTodosListo = document.getElementById("btn-estado-todos-listo");
+
     // Panel orden
     const ordenOverlay = document.getElementById("orden-overlay");
     const ordenFleteroNombreEl = document.getElementById("orden-fletero-nombre");
@@ -940,6 +1054,7 @@
     let talleres = [];
     let panelItems = [];
     let panelFletero = "";
+    let filtroFletero = "todos";
 
     async function actualizarCantidad(id, valor){
       let n = parseInt(valor, 10);
@@ -1059,26 +1174,67 @@
       });
     }
 
+    function pesoEstado(e){
+      const x = (e || "retiro").toLowerCase();
+      if(x === "retiro") return 1;
+      if(x === "proceso") return 2;
+      if(x === "listo") return 3;
+      return 4;
+    }
+
     function renderEstado(){
       if(!tbodyEstado) return;
       tbodyEstado.innerHTML = "";
 
-      const lista = [...talleres]
-        .filter(t => (Number(t.cantidad) || 0) > 0)      // solo talleres con cilindros
-        .sort((a,b) => {
-          if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
-          const oa = ordenManual[a.id] ?? 9999;
-          const ob = ordenManual[b.id] ?? 9999;
-          if(oa !== ob) return oa - ob;
-          return a.nombre.localeCompare(b.nombre,"es");
-        });
+      // Filtra solo talleres con cantidad > 0
+      let lista = talleres.filter(t => (Number(t.cantidad) || 0) > 0);
 
+      // Aplica filtro por fletero si corresponde
+      if(filtroFletero !== "todos"){
+        lista = lista.filter(t => (t.fletero || "") === filtroFletero);
+      }
+
+      // Orden: estado -> vuelta -> ruta -> nombre
+      lista.sort((a,b) => {
+        const ea = a.estado || "retiro";
+        const eb = b.estado || "retiro";
+        const pa = pesoEstado(ea);
+        const pb = pesoEstado(eb);
+        if(pa !== pb) return pa - pb;
+
+        if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
+
+        const oa = ordenManual[a.id] ?? 9999;
+        const ob = ordenManual[b.id] ?? 9999;
+        if(oa !== ob) return oa - ob;
+
+        return a.nombre.localeCompare(b.nombre,"es");
+      });
+
+      // Resumen por estado según lista filtrada
+      let retiroCount = 0, procesoCount = 0, listoCount = 0;
+      lista.forEach(t => {
+        const c = Number(t.cantidad) || 0;
+        const e = (t.estado || "retiro").toLowerCase();
+        if(e === "proceso") procesoCount += c;
+        else if(e === "listo") listoCount += c;
+        else retiroCount += c;
+      });
+
+      if(estadoRetiroCountEl) estadoRetiroCountEl.textContent = retiroCount;
+      if(estadoProcesoCountEl) estadoProcesoCountEl.textContent = procesoCount;
+      if(estadoListoCountEl) estadoListoCountEl.textContent = listoCount;
+
+      // Render filas
       lista.forEach(t => {
         const c = Number(t.cantidad) || 0;
         const fle = t.fletero || "";
-        const estadoVal = t.estado || "retiro";
+        const estadoVal = (t.estado || "retiro").toLowerCase();
 
         const tr = document.createElement("tr");
+        if(estadoVal === "proceso") tr.classList.add("estado-proceso");
+        else if(estadoVal === "listo") tr.classList.add("estado-listo");
+        else tr.classList.add("estado-retiro");
 
         const tdTaller = document.createElement("td");
         tdTaller.textContent = t.nombre;
@@ -1139,6 +1295,31 @@
       cilV1CardEl.textContent = v1;
       cilV2CardEl.textContent = v2;
       cilV3CardEl.textContent = v3;
+    }
+
+    // CAMBIO MASIVO DE ESTADO (según filtro y cantidad > 0)
+    async function cambiarEstadoMasivo(nuevoEstado){
+      const candidatos = talleres.filter(t => {
+        const c = Number(t.cantidad) || 0;
+        if(c <= 0) return false;
+        if(filtroFletero === "todos") return true;
+        return (t.fletero || "") === filtroFletero;
+      });
+
+      if(candidatos.length === 0){
+        alert("No hay talleres con cilindros para actualizar en este filtro.");
+        return;
+      }
+
+      const ok = confirm(`Pasar ${candidatos.length} taller(es) a estado "${nuevoEstado.toUpperCase()}"?`);
+      if(!ok) return;
+
+      const batch = writeBatch(db);
+      candidatos.forEach(t => {
+        const ref = doc(colTalleres, t.id);
+        batch.update(ref, { estado: nuevoEstado });
+      });
+      await batch.commit();
     }
 
     // PANEL ORDEN
@@ -1326,6 +1507,24 @@
       if(ordenImprimirBtn) ordenImprimirBtn.addEventListener("click", () => {
         window.print();
       });
+
+      if(estadoFiltroFletero){
+        estadoFiltroFletero.addEventListener("change", () => {
+          filtroFletero = estadoFiltroFletero.value;
+          renderEstado();
+        });
+      }
+
+      if(btnEstadoTodosProceso){
+        btnEstadoTodosProceso.addEventListener("click", () => {
+          cambiarEstadoMasivo("proceso");
+        });
+      }
+      if(btnEstadoTodosListo){
+        btnEstadoTodosListo.addEventListener("click", () => {
+          cambiarEstadoMasivo("listo");
+        });
+      }
 
       initBotonesFletero();
       initCollapsibles();
