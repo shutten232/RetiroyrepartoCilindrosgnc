@@ -30,6 +30,10 @@
       font-size:16px;
     }
 
+    body.orden-open{
+      overflow:hidden;
+    }
+
     .page{
       max-width:1100px;
       margin:0 auto;
@@ -43,7 +47,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      z-index:9999;
+      z-index:9000;
       animation:splashFade 2.7s ease-in-out forwards;
     }
     .splash-logo-wrapper{
@@ -158,6 +162,38 @@
       background:#fff5f5;
     }
 
+    /* TABS */
+    .tabs{
+      display:flex;
+      gap:4px;
+      margin-bottom:8px;
+      background:var(--card);
+      border-radius:8px;
+      border:1px solid var(--borde);
+      padding:4px;
+    }
+    .tab-btn{
+      flex:1 1 0;
+      border:none;
+      background:transparent;
+      padding:6px 8px;
+      border-radius:6px;
+      font-size:0.9rem;
+      font-weight:600;
+      color:var(--texto-suave);
+      cursor:pointer;
+    }
+    .tab-btn.active{
+      background:var(--rojo);
+      color:#ffffff;
+    }
+    .tab-panel{
+      display:none;
+    }
+    .tab-panel.active{
+      display:block;
+    }
+
     /* PASOS */
     .pasos{
       background:var(--card);
@@ -176,11 +212,11 @@
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin-bottom:10px;
+      margin-bottom:8px;
     }
     .resumen-card{
-      flex:1 1 160px;
-      min-width:160px;
+      flex:1 1 155px;
+      min-width:155px;
       background:var(--card);
       border-radius:8px;
       border:1px solid var(--borde);
@@ -192,8 +228,40 @@
       text-transform:uppercase;
     }
     .res-value{
-      font-size:1.6rem;
+      font-size:1.5rem;
       font-weight:800;
+    }
+
+    /* FLETEROS */
+    .fleteros-actions{
+      background:var(--card);
+      border-radius:8px;
+      border:1px solid var(--borde);
+      padding:8px 10px;
+      margin-bottom:10px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:8px;
+      font-size:0.85rem;
+    }
+    .fleteros-title{
+      font-weight:700;
+      color:var(--rojo-osc);
+      margin-right:4px;
+    }
+    .btn-fletero{
+      background:#ffffff;
+      color:var(--rojo);
+      border:1px solid var(--rojo);
+      border-radius:999px;
+      padding:4px 10px;
+      font-size:0.8rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .btn-fletero:hover{
+      background:#fff5f5;
     }
 
     /* VUELTAS */
@@ -245,21 +313,10 @@
     .vuelta-buttons{
       display:flex;
       flex-direction:column;
-      gap:4px;
+      gap:2px;
       align-items:flex-end;
-    }
-    .btn-sec{
-      background:#ffffff;
-      color:var(--rojo);
-      border:1px solid var(--rojo);
-      border-radius:999px;
-      padding:3px 10px;
-      font-size:0.8rem;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .btn-sec:hover{
-      background:#fff5f5;
+      font-size:0.78rem;
+      color:var(--texto-suave);
     }
 
     .vuelta-body{
@@ -269,33 +326,7 @@
       display:none;
     }
 
-    /* Selección rápida */
-    .vuelta-select-row{
-      margin-bottom:6px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      align-items:center;
-      font-size:0.8rem;
-      color:var(--texto-suave);
-    }
-    .vuelta-select-label{
-      font-weight:600;
-    }
-    .btn-mini{
-      background:#ffffff;
-      border:1px solid var(--borde);
-      border-radius:999px;
-      padding:2px 8px;
-      font-size:0.75rem;
-      cursor:pointer;
-    }
-    .btn-mini:hover{
-      border-color:var(--rojo);
-      color:var(--rojo);
-    }
-
-    /* TABLA */
+    /* TABLAS */
     .tabla-wrap{
       overflow-x:auto;
     }
@@ -324,16 +355,12 @@
       background:#fff9d6;
     }
 
-    .col-taller{ min-width:190px; }
-    .col-tiene{ width:75px; text-align:center; }
-    .col-wsp{ width:75px; text-align:center; }
-    .col-cant{ width:95px; text-align:center; }
-    .col-obs{ min-width:220px; }
+    .col-taller{ min-width:180px; }
+    .col-fletero{ width:130px; text-align:left; }
+    .col-cant{ width:80px; text-align:center; }
+    .col-estado{ width:110px; text-align:center; }
+    .col-obs{ min-width:200px; }
 
-    input[type="checkbox"]{
-      transform:scale(1.3);
-      cursor:pointer;
-    }
     .input-num{
       width:100%;
       max-width:80px;
@@ -360,30 +387,168 @@
       border-color:var(--rojo);
       outline:none;
     }
+    .select-fletero,
+    .select-estado{
+      width:100%;
+      max-width:130px;
+      padding:4px 3px;
+      font-size:0.85rem;
+      border-radius:4px;
+      border:1px solid #cccccc;
+      background:#ffffff;
+      height:32px;
+    }
+    .select-fletero:focus,
+    .select-estado:focus{
+      border-color:var(--rojo);
+      outline:none;
+    }
 
-    .print-hidden{
-      display:none !important;
+    /* TAB ESTADO */
+    .estado-info{
+      background:var(--card);
+      border-radius:8px;
+      border:1px solid var(--borde);
+      padding:8px 10px;
+      margin-bottom:8px;
+      font-size:0.9rem;
+      color:var(--texto-suave);
+    }
+    .estado-tag{
+      font-weight:600;
+    }
+
+    /* PANEL ORDEN / IMPRESIÓN */
+    .orden-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9500;
+    }
+    .orden-card{
+      width:100%;
+      max-width:820px;
+      max-height:90vh;
+      background:#ffffff;
+      border-radius:8px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 12px 40px rgba(0,0,0,0.35);
+      display:flex;
+      flex-direction:column;
+      padding:10px 12px;
+    }
+    .orden-header h2{
+      margin:0 0 4px;
+      font-size:1rem;
+    }
+    .orden-header p{
+      margin:0;
+      font-size:0.85rem;
+      color:#6b7280;
+    }
+    .orden-table-wrap{
+      flex:1 1 auto;
+      overflow:auto;
+      margin-top:6px;
+    }
+    .orden-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.85rem;
+    }
+    .orden-table th,
+    .orden-table td{
+      padding:4px 6px;
+      border-bottom:1px solid #e5e7eb;
+      text-align:left;
+      vertical-align:middle;
+    }
+    .orden-table thead{
+      background:#f9fafb;
+    }
+    .orden-col-num{ width:32px; text-align:center; }
+    .orden-col-vuelta{ width:70px; }
+    .orden-col-cant{ width:70px; text-align:right; }
+    .orden-col-acciones{ width:80px; text-align:center; }
+
+    .orden-btn-small{
+      padding:2px 6px;
+      border-radius:4px;
+      border:1px solid #d1d5db;
+      background:#ffffff;
+      font-size:0.7rem;
+      cursor:pointer;
+      margin:0 1px;
+    }
+    .orden-btn-small:hover{
+      background:#f3f4f6;
+    }
+
+    .orden-footer{
+      margin-top:8px;
+      display:flex;
+      justify-content:flex-end;
+      gap:8px;
+    }
+    .orden-btn-sec{
+      padding:5px 10px;
+      border-radius:4px;
+      border:1px solid #d1d5db;
+      background:#ffffff;
+      color:#374151;
+      font-size:0.8rem;
+      font-weight:500;
+      cursor:pointer;
+    }
+    .orden-btn-sec:hover{
+      background:#f3f4f6;
+    }
+    .orden-btn-main{
+      padding:5px 10px;
+      border-radius:4px;
+      border:1px solid var(--rojo);
+      background:var(--rojo);
+      color:#ffffff;
+      font-size:0.8rem;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .orden-btn-main:hover{
+      background:#b91c1c;
     }
 
     @media print{
       body{
         background:#ffffff;
-        font-size:14px;
+        font-size:13px;
       }
       .header,
+      .tabs,
       .pasos,
       .resumen,
-      .btn-sec,
-      .btn-reset,
-      .btn-mini{
-        display:none !重要;
-      }
+      .fleteros-actions,
+      .vueltas,
+      .estado-info,
       .splash-overlay{
         display:none !important;
       }
-      /* Ocultar columnas de check en papel */
-      .col-tiene,
-      .col-wsp{
+      .orden-overlay{
+        position:static;
+        inset:auto;
+        display:block !important;
+        background:#ffffff !important;
+      }
+      .orden-card{
+        box-shadow:none;
+        border:none;
+        max-width:100%;
+        max-height:none;
+        padding:0;
+      }
+      .orden-footer{
         display:none;
       }
     }
@@ -405,14 +570,17 @@
         font-size:1.1rem;
       }
       table{
-        font-size:0.82rem;
+        font-size:0.8rem;
       }
       th,td{
         padding:4px 5px;
       }
-      .input-num,.input-text{
-        font-size:0.85rem;
+      .input-num,.input-text,.select-fletero,.select-estado{
+        font-size:0.8rem;
         height:30px;
+      }
+      .col-fletero,.col-estado{
+        width:110px;
       }
     }
   </style>
@@ -434,7 +602,7 @@
         <div class="logo">Q</div>
         <div>
           <h1 class="header-title">Retiro de cilindros por taller</h1>
-          <p class="header-sub">Cargar cilindros, separar por vuelta y mandar ruta al fletero.</p>
+          <p class="header-sub">Carga de talleres, fleteros y estado general.</p>
         </div>
       </div>
       <div class="header-right">
@@ -443,158 +611,195 @@
       </div>
     </header>
 
-    <!-- PASOS -->
-    <section class="pasos">
-      <div><strong>PASO 1:</strong> Anotar cantidad. “TIENE” queda activo y se guarda (sirve para imprimir).</div>
-      <div><strong>PASO 2:</strong> Marcar “WSP” en los talleres que querés mandar por WhatsApp (pueden ser de cualquier vuelta).</div>
-      <div><strong>PASO 3:</strong> Botón “WhatsApp / Imprimir”: arma UN solo mensaje con TODOS los WSP marcados. “Imprimir vuelta” usa TIENE de esa vuelta.</div>
+    <!-- TABS -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="carga">Carga y reparto</button>
+      <button class="tab-btn" data-tab="estado">Estado cilindros</button>
+    </nav>
+
+    <!-- TAB CARGA -->
+    <section id="tab-carga" class="tab-panel active">
+      <!-- PASOS -->
+      <section class="pasos">
+        <div><strong>PASO 1:</strong> Cargar cantidad de cilindros de cada taller.</div>
+        <div><strong>PASO 2:</strong> Elegir fletero en cada taller (Agustín / Nano / Rodrigo / Joaquín).</div>
+        <div><strong>PASO 3:</strong> Observaciones si hace falta.</div>
+        <div><strong>PASO 4:</strong> En FLETEROS elegís el nombre, acomodás el orden con las flechas y desde ahí imprimís.</div>
+      </section>
+
+      <!-- RESUMEN -->
+      <section class="resumen">
+        <div class="resumen-card">
+          <div class="res-label">Cilindros totales</div>
+          <div class="res-value" id="cil-total-general">0</div>
+        </div>
+        <div class="resumen-card">
+          <div class="res-label">Vuelta 1</div>
+          <div class="res-value" id="cil-v1">0</div>
+        </div>
+        <div class="resumen-card">
+          <div class="res-label">Vuelta 2</div>
+          <div class="res-value" id="cil-v2">0</div>
+        </div>
+        <div class="resumen-card">
+          <div class="res-label">Vuelta 3</div>
+          <div class="res-value" id="cil-v3">0</div>
+        </div>
+      </section>
+
+      <!-- FLETEROS -->
+      <section class="fleteros-actions">
+        <span class="fleteros-title">Fleteros</span>
+        <button class="btn-fletero btn-print-fletero" data-fletero="Agustin">Orden / Imprimir Agustín</button>
+        <button class="btn-fletero btn-print-fletero" data-fletero="Nano">Orden / Imprimir Nano</button>
+        <button class="btn-fletero btn-print-fletero" data-fletero="Rodrigo">Orden / Imprimir Rodrigo</button>
+        <button class="btn-fletero btn-print-fletero" data-fletero="Joaquin">Orden / Imprimir Joaquín</button>
+      </section>
+
+      <!-- VUELTAS -->
+      <section class="vueltas">
+        <!-- VUELTA 1 -->
+        <article class="vuelta-card" data-vuelta="1">
+          <div class="vuelta-header">
+            <div class="vuelta-info">
+              <span class="toggle-icon">▼</span>
+              <span class="vuelta-nombre">Vuelta 1</span>
+            </div>
+            <div class="vuelta-buttons">
+              <div class="vuelta-total">Cilindros: <span id="cil-v1-card">0</span></div>
+            </div>
+          </div>
+          <div class="vuelta-body">
+            <div class="tabla-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="col-taller">Taller</th>
+                    <th class="col-fletero">Fletero</th>
+                    <th class="col-cant">Cantidad</th>
+                    <th class="col-obs">Observaciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-v1"></tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- VUELTA 2 -->
+        <article class="vuelta-card" data-vuelta="2">
+          <div class="vuelta-header">
+            <div class="vuelta-info">
+              <span class="toggle-icon">▼</span>
+              <span class="vuelta-nombre">Vuelta 2</span>
+            </div>
+            <div class="vuelta-buttons">
+              <div class="vuelta-total">Cilindros: <span id="cil-v2-card">0</span></div>
+            </div>
+          </div>
+          <div class="vuelta-body">
+            <div class="tabla-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="col-taller">Taller</th>
+                    <th class="col-fletero">Fletero</th>
+                    <th class="col-cant">Cantidad</th>
+                    <th class="col-obs">Observaciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-v2"></tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- VUELTA 3 -->
+        <article class="vuelta-card" data-vuelta="3">
+          <div class="vuelta-header">
+            <div class="vuelta-info">
+              <span class="toggle-icon">▼</span>
+              <span class="vuelta-nombre">Vuelta 3</span>
+            </div>
+            <div class="vuelta-buttons">
+              <div class="vuelta-total">Cilindros: <span id="cil-v3-card">0</span></div>
+            </div>
+          </div>
+          <div class="vuelta-body">
+            <div class="tabla-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="col-taller">Taller</th>
+                    <th class="col-fletero">Fletero</th>
+                    <th class="col-cant">Cantidad</th>
+                    <th class="col-obs">Observaciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-v3"></tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      </section>
     </section>
 
-    <!-- RESUMEN -->
-    <section class="resumen">
-      <div class="resumen-card">
-        <div class="res-label">Cilindros totales</div>
-        <div class="res-value" id="cil-total-general">0</div>
-      </div>
-      <div class="resumen-card">
-        <div class="res-label">Vuelta 1</div>
-        <div class="res-value" id="cil-v1">0</div>
-      </div>
-      <div class="resumen-card">
-        <div class="res-label">Vuelta 2</div>
-        <div class="res-value" id="cil-v2">0</div>
-      </div>
-      <div class="resumen-card">
-        <div class="res-label">Vuelta 3</div>
-        <div class="res-value" id="cil-v3">0</div>
+    <!-- TAB ESTADO -->
+    <section id="tab-estado" class="tab-panel">
+      <section class="estado-info">
+        Acá solo ves los talleres que tienen cilindros cargados (cantidad &gt; 0) y podés cambiar el estado.
+        <br>
+        <span class="estado-tag">• En retiro:</span> el cilindro todavía está en el taller / en viaje.
+        <br>
+        <span class="estado-tag">• Proceso:</span> cilindro ya en CRPC, en prueba / armado.
+        <br>
+        <span class="estado-tag">• Listo:</span> cilindro terminado, para entregar.
+      </section>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Taller</th>
+              <th>Vuelta</th>
+              <th>Cant.</th>
+              <th>Fletero</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-estado"></tbody>
+        </table>
       </div>
     </section>
+  </div>
 
-    <!-- VUELTAS -->
-    <section class="vueltas">
-      <!-- VUELTA 1 -->
-      <article class="vuelta-card" data-vuelta="1">
-        <div class="vuelta-header">
-          <div class="vuelta-info">
-            <span class="toggle-icon">▼</span>
-            <span class="vuelta-nombre">Vuelta 1</span>
-          </div>
-          <div class="vuelta-buttons">
-            <div class="vuelta-total">Cilindros: <span id="cil-v1-card">0</span></div>
-            <button class="btn-sec btn-wa-vuelta" data-vuelta="1">
-              WhatsApp / Imprimir
-            </button>
-            <button class="btn-sec btn-print-vuelta" data-vuelta="1">
-              Imprimir vuelta
-            </button>
-          </div>
-        </div>
-        <div class="vuelta-body">
-          <div class="vuelta-select-row">
-            <span class="vuelta-select-label">Selección rápida (columna WSP):</span>
-            <button class="btn-mini btn-sel" data-vuelta="1" data-mode="all">Todos</button>
-            <button class="btn-mini btn-sel" data-vuelta="1" data-mode="with-cant">Solo con cantidad</button>
-            <button class="btn-mini btn-sel" data-vuelta="1" data-mode="none">Ninguno</button>
-          </div>
-          <div class="tabla-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th class="col-taller">Taller</th>
-                  <th class="col-tiene">Tiene</th>
-                  <th class="col-wsp">WSP</th>
-                  <th class="col-cant">Cantidad</th>
-                  <th class="col-obs">Observaciones</th>
-                </tr>
-              </thead>
-              <tbody id="tbody-v1"></tbody>
-            </table>
-          </div>
-        </div>
-      </article>
-
-      <!-- VUELTA 2 -->
-      <article class="vuelta-card" data-vuelta="2">
-        <div class="vuelta-header">
-          <div class="vuelta-info">
-            <span class="toggle-icon">▼</span>
-            <span class="vuelta-nombre">Vuelta 2</span>
-          </div>
-          <div class="vuelta-buttons">
-            <div class="vuelta-total">Cilindros: <span id="cil-v2-card">0</span></div>
-            <button class="btn-sec btn-wa-vuelta" data-vuelta="2">
-              WhatsApp / Imprimir
-            </button>
-            <button class="btn-sec btn-print-vuelta" data-vuelta="2">
-              Imprimir vuelta
-            </button>
-          </div>
-        </div>
-        <div class="vuelta-body">
-          <div class="vuelta-select-row">
-            <span class="vuelta-select-label">Selección rápida (columna WSP):</span>
-            <button class="btn-mini btn-sel" data-vuelta="2" data-mode="all">Todos</button>
-            <button class="btn-mini btn-sel" data-vuelta="2" data-mode="with-cant">Solo con cantidad</button>
-            <button class="btn-mini btn-sel" data-vuelta="2" data-mode="none">Ninguno</button>
-          </div>
-          <div class="tabla-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th class="col-taller">Taller</th>
-                  <th class="col-tiene">Tiene</th>
-                  <th class="col-wsp">WSP</th>
-                  <th class="col-cant">Cantidad</th>
-                  <th class="col-obs">Observaciones</th>
-                </tr>
-              </thead>
-              <tbody id="tbody-v2"></tbody>
-            </table>
-          </div>
-        </div>
-      </article>
-
-      <!-- VUELTA 3 -->
-      <article class="vuelta-card" data-vuelta="3">
-        <div class="vuelta-header">
-          <div class="vuelta-info">
-            <span class="toggle-icon">▼</span>
-            <span class="vuelta-nombre">Vuelta 3</span>
-          </div>
-          <div class="vuelta-buttons">
-            <div class="vuelta-total">Cilindros: <span id="cil-v3-card">0</span></div>
-            <button class="btn-sec btn-wa-vuelta" data-vuelta="3">
-              WhatsApp / Imprimir
-            </button>
-            <button class="btn-sec btn-print-vuelta" data-vuelta="3">
-              Imprimir vuelta
-            </button>
-          </div>
-        </div>
-        <div class="vuelta-body">
-          <div class="vuelta-select-row">
-            <span class="vuelta-select-label">Selección rápida (columna WSP):</span>
-            <button class="btn-mini btn-sel" data-vuelta="3" data-mode="all">Todos</button>
-            <button class="btn-mini btn-sel" data-vuelta="3" data-mode="with-cant">Solo con cantidad</button>
-            <button class="btn-mini btn-sel" data-vuelta="3" data-mode="none">Ninguno</button>
-          </div>
-          <div class="tabla-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th class="col-taller">Taller</th>
-                  <th class="col-tiene">Tiene</th>
-                  <th class="col-wsp">WSP</th>
-                  <th class="col-cant">Cantidad</th>
-                  <th class="col-obs">Observaciones</th>
-                </tr>
-              </thead>
-              <tbody id="tbody-v3"></tbody>
-            </table>
-          </div>
-        </div>
-      </article>
-    </section>
+  <!-- PANEL ORDEN / IMPRESIÓN -->
+  <div id="orden-overlay" class="orden-overlay">
+    <div class="orden-card">
+      <div class="orden-header">
+        <h2>Orden de talleres – Fletero <span id="orden-fletero-nombre"></span></h2>
+        <p>Usá las flechas para acomodar el recorrido. Después imprimís esta lista.</p>
+      </div>
+      <div class="orden-table-wrap">
+        <table class="orden-table">
+          <thead>
+            <tr>
+              <th class="orden-col-num">#</th>
+              <th class="orden-col-vuelta">Vuelta</th>
+              <th>Taller</th>
+              <th class="orden-col-cant">Cant.</th>
+              <th>Obs.</th>
+              <th class="orden-col-acciones">Orden</th>
+            </tr>
+          </thead>
+          <tbody id="orden-tbody"></tbody>
+        </table>
+      </div>
+      <div class="orden-footer">
+        <button id="orden-cerrar" class="orden-btn-sec">Cerrar</button>
+        <button id="orden-imprimir" class="orden-btn-main">Imprimir</button>
+      </div>
+    </div>
   </div>
 
   <script type="module">
@@ -624,7 +829,6 @@
     const db = getFirestore(app);
     const colTalleres = collection(db, "talleres_reparto");
 
-    // Ocultar splash al terminar animación
     const splashEl = document.getElementById("splash");
     if(splashEl){
       splashEl.addEventListener("animationend", () => {
@@ -632,12 +836,11 @@
       });
     }
 
-    // Orden manual de ruta (por id) para que Calera Silvana y Calera Torres queden juntas
+    // Orden por ruta base
     const ordenManual = {
-      // Vuelta 1
       "minuto-gnc":1,
-      "silvana-calera":2,        // Calera Silvana
-      "calera-torres-gnc":3,     // Calera Torres
+      "silvana-calera":2,
+      "calera-torres-gnc":3,
       "zico":4,
       "colon-gnc":5,
       "tabach-gnc":6,
@@ -647,8 +850,6 @@
       "porto-alta-gracia":10,
       "brochero-gnc":11,
       "valparaiso-gnc":12,
-
-      // Vuelta 2
       "canovas":13,
       "malvinas-gnc":14,
       "genesis-gnc":15,
@@ -657,8 +858,6 @@
       "forteza-gnc":18,
       "enero-gas":19,
       "pepe":20,
-
-      // Vuelta 3
       "san-francisco-gnc":21,
       "genovesio":22,
       "gnc-giordano":23,
@@ -670,54 +869,55 @@
       "misiti":29,
       "enjom":30,
       "alemanes":31,
-      "acosta":32,     // se muestra como Rosso
+      "acosta":32,
       "ceriani":33
     };
 
     const defaultTalleres = [
       // Vuelta 1
-      { id: "minuto-gnc", nombre: "Minuto GNC", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "calera-torres-gnc", nombre: "Calera Torres", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "silvana-calera", nombre: "Calera Silvana", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "zico", nombre: "Zico", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "colon-gnc", nombre: "Colón GNC", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "tabach-gnc", nombre: "Tabach GNC", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "franco-alta-gracia", nombre: "Franco Alta Gracia", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "servincor", nombre: "Servincor", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "bruno-f", nombre: "Bruno F", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "porto-alta-gracia", nombre: "Porto Alta Gracia", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "brochero-gnc", nombre: "Brochero GNC", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "valparaiso-gnc", nombre: "Valparaíso GNC", vuelta: 1, cilindrosPend: 0, cantidad: 0, obs: "" },
+      { id: "minuto-gnc", nombre: "Minuto GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "calera-torres-gnc", nombre: "Calera Torres", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "silvana-calera", nombre: "Calera Silvana", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "zico", nombre: "Zico", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "colon-gnc", nombre: "Colón GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "tabach-gnc", nombre: "Tabach GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "franco-alta-gracia", nombre: "Franco Alta Gracia", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "servincor", nombre: "Servincor", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "bruno-f", nombre: "Bruno F", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "porto-alta-gracia", nombre: "Porto Alta Gracia", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "brochero-gnc", nombre: "Brochero GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "valparaiso-gnc", nombre: "Valparaíso GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
 
       // Vuelta 2
-      { id: "canovas", nombre: "Cánovas", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "malvinas-gnc", nombre: "Malvinas GNC", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "genesis-gnc", nombre: "Génesis GNC", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "alem", nombre: "ALEM", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "cars", nombre: "Cars", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "forteza-gnc", nombre: "Forteza GNC", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "enero-gas", nombre: "Enero Gas", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "pepe", nombre: "Pepe", vuelta: 2, cilindrosPend: 0, cantidad: 0, obs: "" },
+      { id: "canovas", nombre: "Cánovas", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "malvinas-gnc", nombre: "Malvinas GNC", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "genesis-gnc", nombre: "Génesis GNC", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "alem", nombre: "ALEM", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "cars", nombre: "Cars", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "forteza-gnc", nombre: "Forteza GNC", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "enero-gas", nombre: "Enero Gas", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "pepe", nombre: "Pepe", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
 
       // Vuelta 3
-      { id: "san-francisco-gnc", nombre: "San Francisco GNC", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "genovesio", nombre: "Genovesio", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "gnc-giordano", nombre: "GNC Giordano", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "tecno-gnc", nombre: "Tecno GNC", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "marcos-gnc", nombre: "Marcos GNC", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "franco-cba", nombre: "Franco cba", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "franc-villa-dolores", nombre: "Franc Villa Dolores", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "leal", nombre: "Leal", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "misiti", nombre: "Misiti", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "enjom", nombre: "Enjom", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "alemanes", nombre: "Alemanes", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "acosta", nombre: "Rosso", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" },
-      { id: "ceriani", nombre: "CERIANI", vuelta: 3, cilindrosPend: 0, cantidad: 0, obs: "" }
+      { id: "san-francisco-gnc", nombre: "San Francisco GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "genovesio", nombre: "Genovesio", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "gnc-giordano", nombre: "GNC Giordano", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "tecno-gnc", nombre: "Tecno GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "marcos-gnc", nombre: "Marcos GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "franco-cba", nombre: "Franco cba", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "franc-villa-dolores", nombre: "Franc Villa Dolores", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "leal", nombre: "Leal", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "misiti", nombre: "Misiti", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "enjom", nombre: "Enjom", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "alemanes", nombre: "Alemanes", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "acosta", nombre: "Rosso", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "ceriani", nombre: "CERIANI", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" }
     ];
 
     const tbodyV1 = document.getElementById("tbody-v1");
     const tbodyV2 = document.getElementById("tbody-v2");
     const tbodyV3 = document.getElementById("tbody-v3");
+    const tbodyEstado = document.getElementById("tbody-estado");
 
     const cilTotalGeneralEl = document.getElementById("cil-total-general");
     const cilV1ResumenEl = document.getElementById("cil-v1");
@@ -730,16 +930,22 @@
 
     const btnReset = document.getElementById("btn-reset");
 
+    // Panel orden
+    const ordenOverlay = document.getElementById("orden-overlay");
+    const ordenFleteroNombreEl = document.getElementById("orden-fletero-nombre");
+    const ordenTbodyEl = document.getElementById("orden-tbody");
+    const ordenCerrarBtn = document.getElementById("orden-cerrar");
+    const ordenImprimirBtn = document.getElementById("orden-imprimir");
+
     let talleres = [];
+    let panelItems = [];
+    let panelFletero = "";
 
     async function actualizarCantidad(id, valor){
       let n = parseInt(valor, 10);
       if(isNaN(n) || n < 0) n = 0;
       const ref = doc(colTalleres, id);
-      await updateDoc(ref, {
-        cantidad: n,
-        cilindrosPend: n > 0 ? 1 : 0
-      });
+      await updateDoc(ref, { cantidad: n });
     }
 
     async function actualizarObs(id, texto){
@@ -747,212 +953,30 @@
       await updateDoc(ref, { obs: texto });
     }
 
-    async function actualizarTiene(id, checked, inpCant){
-      let n = parseInt(inpCant.value || "0", 10);
-      if(checked){
-        if(isNaN(n) || n <= 0){
-          n = 1;
-          inpCant.value = "1";
-        }
-      }else{
-        n = 0;
-        inpCant.value = "";
-      }
+    async function actualizarFletero(id, fletero){
       const ref = doc(colTalleres, id);
-      await updateDoc(ref, {
-        cantidad: n,
-        cilindrosPend: checked ? 1 : 0
-      });
+      await updateDoc(ref, { fletero: fletero });
+    }
+
+    async function actualizarEstado(id, estado){
+      const ref = doc(colTalleres, id);
+      await updateDoc(ref, { estado: estado });
     }
 
     async function reiniciarDia(){
-      const ok = confirm("¿Reiniciar TODOS los datos de hoy? (cantidades y observaciones)");
+      const ok = confirm("¿Reiniciar TODOS los datos de hoy? (cantidades, fletero, observaciones, estado)?");
       if(!ok) return;
       const snap = await getDocs(colTalleres);
       const batch = writeBatch(db);
       snap.forEach(d => {
         batch.update(d.ref, {
-          cilindrosPend: 0,
           cantidad: 0,
-          obs: ""
+          obs: "",
+          fletero: "",
+          estado: "retiro"
         });
       });
       await batch.commit();
-    }
-
-    function abrirPopupRuta(seleccion){
-      const fechaStr = new Date().toLocaleDateString("es-AR");
-
-      let textoWhatsapp = "";
-      textoWhatsapp += "RETIRO CILINDROS - CRPC QUIROGA\n\n";
-      textoWhatsapp += "Talleres a retirar:\n";
-
-      const porVuelta = {};
-      seleccion.forEach(item => {
-        const v = item.vuelta || "?";
-        if(!porVuelta[v]) porVuelta[v] = [];
-        porVuelta[v].push(item);
-      });
-
-      Object.keys(porVuelta)
-        .sort((a,b) => Number(a) - Number(b))
-        .forEach(v => {
-          textoWhatsapp += "\nVuelta " + v + ":\n";
-          porVuelta[v].forEach(item => {
-            textoWhatsapp +=
-              "  - " + item.nombre +
-              " | Cilindros: " + item.cantidad +
-              (item.obs ? " | Obs: " + item.obs : "") +
-              "\n";
-          });
-        });
-
-      const popup = window.open("", "_blank");
-      if(!popup) return;
-
-      const docP = popup.document;
-      const body = docP.body;
-      docP.title = "Ruta cilindros";
-      body.innerHTML = "";
-      body.style.fontFamily = 'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';
-      body.style.padding = "12px";
-
-      const h2 = docP.createElement("h2");
-      h2.textContent = "Ruta de retiro de cilindros";
-      body.appendChild(h2);
-
-      const pFecha = docP.createElement("p");
-      pFecha.innerHTML = "<strong>Fecha:</strong> " + fechaStr;
-      body.appendChild(pFecha);
-
-      const table = docP.createElement("table");
-      table.style.width = "100%";
-      table.style.borderCollapse = "collapse";
-      table.style.fontSize = "14px";
-      table.style.marginTop = "8px";
-
-      const thead = docP.createElement("thead");
-      const trHead = docP.createElement("tr");
-      ["#","Vuelta","Taller","Cant.","Obs."].forEach(text => {
-        const th = docP.createElement("th");
-        th.textContent = text;
-        th.style.border = "1px solid #ccc";
-        th.style.padding = "4px 6px";
-        th.style.background = "#f3f4f6";
-        trHead.appendChild(th);
-      });
-      thead.appendChild(trHead);
-      table.appendChild(thead);
-
-      const tbody = docP.createElement("tbody");
-      seleccion.forEach((item, idx) => {
-        const tr = docP.createElement("tr");
-        const addCell = (txt, right=false) => {
-          const td = docP.createElement("td");
-          td.textContent = txt;
-          td.style.border = "1px solid #ccc";
-          td.style.padding = "4px 6px";
-          if(right) td.style.textAlign = "right";
-          tr.appendChild(td);
-        };
-        addCell(String(idx+1));
-        addCell("Vuelta " + item.vuelta);
-        addCell(item.nombre);
-        addCell(String(item.cantidad), true);
-        addCell(item.obs || "");
-        tbody.appendChild(tr);
-      });
-      table.appendChild(tbody);
-      body.appendChild(table);
-
-      const h3 = docP.createElement("h3");
-      h3.textContent = "Texto para WhatsApp";
-      h3.style.marginTop = "12px";
-      body.appendChild(h3);
-
-      const textarea = docP.createElement("textarea");
-      textarea.value = textoWhatsapp;
-      textarea.style.width = "100%";
-      textarea.style.height = "150px";
-      textarea.style.marginTop = "8px";
-      textarea.style.fontFamily = "inherit";
-      textarea.style.fontSize = "13px";
-      body.appendChild(textarea);
-
-      const actions = docP.createElement("div");
-      actions.style.marginTop = "8px";
-      actions.style.display = "flex";
-      actions.style.gap = "8px";
-      actions.style.flexWrap = "wrap";
-
-      const styleBtn = (el, outline) => {
-        el.style.padding = "6px 10px";
-        el.style.borderRadius = "4px";
-        el.style.border = "1px solid #d50000";
-        el.style.fontSize = "13px";
-        el.style.cursor = "pointer";
-        el.style.textDecoration = "none";
-        el.style.display = "inline-block";
-        if(outline){
-          el.style.background = "#fff";
-          el.style.color = "#d50000";
-        }else{
-          el.style.background = "#d50000";
-          el.style.color = "#fff";
-        }
-      };
-
-      const btnPrint = docP.createElement("button");
-      btnPrint.textContent = "Imprimir";
-      styleBtn(btnPrint,false);
-      btnPrint.onclick = () => popup.print();
-      actions.appendChild(btnPrint);
-
-      const linkWA = docP.createElement("a");
-      linkWA.textContent = "Abrir WhatsApp";
-      linkWA.href = "https://wa.me/?text=" + encodeURIComponent(textoWhatsapp);
-      linkWA.target = "_blank";
-      linkWA.rel = "noopener noreferrer";
-      styleBtn(linkWA,true);
-      actions.appendChild(linkWA);
-
-      body.appendChild(actions);
-    }
-
-    // WhatsApp: usa TODOS los WSP marcados en cualquier vuelta
-    function generarRutaPorVuelta(_vueltaBtn){
-      const cards = document.querySelectorAll(".vuelta-card");
-      const seleccion = [];
-
-      cards.forEach(card => {
-        const v = parseInt(card.getAttribute("data-vuelta"),10) || "?";
-        const rows = card.querySelectorAll("tbody tr");
-
-        rows.forEach(row => {
-          const chkWsp = row.querySelector(".chk-wsp");
-          if(!chkWsp || !chkWsp.checked) return;
-
-          const cantInput = row.querySelector(".input-num");
-          let cantidad = parseInt(cantInput && cantInput.value ? cantInput.value : "0",10);
-          if(isNaN(cantidad) || cantidad <= 0){
-            cantidad = 1;
-          }
-
-          const id = row.dataset.id;
-          const nombreEl = row.querySelector(".col-taller span");
-          const nombre = nombreEl ? nombreEl.textContent.trim() : "";
-          const obsInput = row.querySelector(".input-text");
-          const obs = obsInput ? obsInput.value.trim() : "";
-          seleccion.push({ id, vuelta: v, nombre, cantidad, obs });
-        });
-      });
-
-      if(seleccion.length === 0){
-        alert("Marcá al menos un taller en la columna WSP (en cualquier vuelta).");
-        return;
-      }
-
-      abrirPopupRuta(seleccion);
     }
 
     function renderVuelta(vuelta, tbody){
@@ -968,14 +992,12 @@
 
       lista.forEach(t => {
         const cant = Number(t.cantidad) || 0;
-        const tieneFlag = (Number(t.cilindrosPend) || 0) > 0;
-        const tiene = tieneFlag || cant > 0;
+        const fleteroVal = t.fletero || "";
 
         const tr = document.createElement("tr");
-        if(tiene) tr.classList.add("tiene");
         tr.dataset.id = t.id;
+        if(cant > 0) tr.classList.add("tiene");
 
-        // Taller
         const tdTaller = document.createElement("td");
         tdTaller.className = "col-taller";
         const nombreSpan = document.createElement("span");
@@ -983,26 +1005,21 @@
         tdTaller.appendChild(nombreSpan);
         tr.appendChild(tdTaller);
 
-        // TIENE (persistente, sirve para imprimir)
-        const tdTiene = document.createElement("td");
-        tdTiene.className = "col-tiene";
-        const chkTiene = document.createElement("input");
-        chkTiene.type = "checkbox";
-        chkTiene.className = "chk-tiene";
-        chkTiene.checked = tieneFlag;
-        tdTiene.appendChild(chkTiene);
-        tr.appendChild(tdTiene);
+        const tdFlet = document.createElement("td");
+        tdFlet.className = "col-fletero";
+        const selF = document.createElement("select");
+        selF.className = "select-fletero";
+        selF.innerHTML = `
+          <option value="">-</option>
+          <option value="Agustin">Agustín</option>
+          <option value="Nano">Nano</option>
+          <option value="Rodrigo">Rodrigo</option>
+          <option value="Joaquin">Joaquín</option>
+        `;
+        selF.value = fleteroVal || "";
+        tdFlet.appendChild(selF);
+        tr.appendChild(tdFlet);
 
-        // WSP (solo para WhatsApp, no se guarda en DB)
-        const tdWsp = document.createElement("td");
-        tdWsp.className = "col-wsp";
-        const chkWsp = document.createElement("input");
-        chkWsp.type = "checkbox";
-        chkWsp.className = "chk-wsp";
-        tdWsp.appendChild(chkWsp);
-        tr.appendChild(tdWsp);
-
-        // Cantidad
         const tdCant = document.createElement("td");
         tdCant.className = "col-cant";
         const inpCant = document.createElement("input");
@@ -1014,7 +1031,6 @@
         tdCant.appendChild(inpCant);
         tr.appendChild(tdCant);
 
-        // Observaciones
         const tdObs = document.createElement("td");
         tdObs.className = "col-obs";
         const inpObs = document.createElement("input");
@@ -1024,9 +1040,8 @@
         tdObs.appendChild(inpObs);
         tr.appendChild(tdObs);
 
-        // Eventos
-        chkTiene.addEventListener("change", () => {
-          actualizarTiene(t.id, chkTiene.checked, inpCant);
+        selF.addEventListener("change", () => {
+          actualizarFletero(t.id, selF.value);
         });
 
         inpCant.addEventListener("blur", () => {
@@ -1044,18 +1059,76 @@
       });
     }
 
+    function renderEstado(){
+      if(!tbodyEstado) return;
+      tbodyEstado.innerHTML = "";
+
+      const lista = [...talleres]
+        .filter(t => (Number(t.cantidad) || 0) > 0)      // solo talleres con cilindros
+        .sort((a,b) => {
+          if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
+          const oa = ordenManual[a.id] ?? 9999;
+          const ob = ordenManual[b.id] ?? 9999;
+          if(oa !== ob) return oa - ob;
+          return a.nombre.localeCompare(b.nombre,"es");
+        });
+
+      lista.forEach(t => {
+        const c = Number(t.cantidad) || 0;
+        const fle = t.fletero || "";
+        const estadoVal = t.estado || "retiro";
+
+        const tr = document.createElement("tr");
+
+        const tdTaller = document.createElement("td");
+        tdTaller.textContent = t.nombre;
+        tr.appendChild(tdTaller);
+
+        const tdVuelta = document.createElement("td");
+        tdVuelta.textContent = "V" + (t.vuelta || "?");
+        tr.appendChild(tdVuelta);
+
+        const tdCant = document.createElement("td");
+        tdCant.textContent = c;
+        tr.appendChild(tdCant);
+
+        const tdFle = document.createElement("td");
+        tdFle.textContent = fle || "-";
+        tr.appendChild(tdFle);
+
+        const tdEstado = document.createElement("td");
+        const selEstado = document.createElement("select");
+        selEstado.className = "select-estado";
+        selEstado.innerHTML = `
+          <option value="retiro">En retiro</option>
+          <option value="proceso">Proceso</option>
+          <option value="listo">Listo</option>
+        `;
+        selEstado.value = estadoVal;
+        selEstado.addEventListener("change", () => {
+          actualizarEstado(t.id, selEstado.value);
+        });
+        tdEstado.appendChild(selEstado);
+        tr.appendChild(tdEstado);
+
+        tbodyEstado.appendChild(tr);
+      });
+    }
+
     function render(){
       renderVuelta(1, tbodyV1);
       renderVuelta(2, tbodyV2);
       renderVuelta(3, tbodyV3);
+      renderEstado();
 
       let total = 0, v1 = 0, v2 = 0, v3 = 0;
+
       talleres.forEach(t => {
         const c = Number(t.cantidad) || 0;
         total += c;
         if(t.vuelta === 1) v1 += c;
-        if(t.vuelta === 2) v2 += c;
-        if(t.vuelta === 3) v3 += c;
+        else if(t.vuelta === 2) v2 += c;
+        else if(t.vuelta === 3) v3 += c;
       });
 
       cilTotalGeneralEl.textContent = total;
@@ -1068,69 +1141,113 @@
       cilV3CardEl.textContent = v3;
     }
 
-    // Imprimir usa TIENE por vuelta
-    function imprimirVuelta(vuelta){
-      const card = document.querySelector('.vuelta-card[data-vuelta="'+vuelta+'"]');
-      if(!card) return;
+    // PANEL ORDEN
 
-      const rows = card.querySelectorAll("tbody tr");
-      const seleccionadas = [];
+    function renderOrdenPanel(){
+      ordenTbodyEl.innerHTML = "";
+      panelItems.forEach((item, idx) => {
+        const tr = document.createElement("tr");
 
-      rows.forEach(row => {
-        const chkTiene = row.querySelector(".chk-tiene");
-        if(chkTiene && chkTiene.checked) seleccionadas.push(row);
+        const tdNum = document.createElement("td");
+        tdNum.className = "orden-col-num";
+        tdNum.textContent = idx + 1;
+        tr.appendChild(tdNum);
+
+        const tdVuelta = document.createElement("td");
+        tdVuelta.className = "orden-col-vuelta";
+        tdVuelta.textContent = "V" + (item.vuelta || "?");
+        tr.appendChild(tdVuelta);
+
+        const tdTaller = document.createElement("td");
+        tdTaller.textContent = item.taller || "";
+        tr.appendChild(tdTaller);
+
+        const tdCant = document.createElement("td");
+        tdCant.className = "orden-col-cant";
+        tdCant.textContent = item.cantidad && item.cantidad > 0 ? item.cantidad : "";
+        tr.appendChild(tdCant);
+
+        const tdObs = document.createElement("td");
+        tdObs.textContent = item.obs || "";
+        tr.appendChild(tdObs);
+
+        const tdAcc = document.createElement("td");
+        tdAcc.className = "orden-col-acciones";
+        const btnUp = document.createElement("button");
+        btnUp.textContent = "↑";
+        btnUp.className = "orden-btn-small";
+        btnUp.addEventListener("click", () => moverOrden(idx, -1));
+        const btnDown = document.createElement("button");
+        btnDown.textContent = "↓";
+        btnDown.className = "orden-btn-small";
+        btnDown.addEventListener("click", () => moverOrden(idx, 1));
+        tdAcc.appendChild(btnUp);
+        tdAcc.appendChild(btnDown);
+        tr.appendChild(tdAcc);
+
+        ordenTbodyEl.appendChild(tr);
       });
+    }
 
-      if(seleccionadas.length === 0){
-        alert("En la Vuelta " + vuelta + " marcá al menos un taller en la columna TIENE.");
+    function moverOrden(index, dir){
+      const nuevo = index + dir;
+      if(nuevo < 0 || nuevo >= panelItems.length) return;
+      const temp = panelItems[index];
+      panelItems[index] = panelItems[nuevo];
+      panelItems[nuevo] = temp;
+      renderOrdenPanel();
+    }
+
+    function abrirOrdenFletero(fleteroClave){
+      const fleLower = fleteroClave.toLowerCase();
+      const seleccion = talleres
+        .filter(t => {
+          const fle = (t.fletero || "").toLowerCase();
+          return fle === fleLower ||
+                 fle === fleLower.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+        })
+        .filter(t => (Number(t.cantidad) || 0) > 0)
+        .sort((a,b) => {
+          if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
+          const oa = ordenManual[a.id] ?? 9999;
+          const ob = ordenManual[b.id] ?? 9999;
+          if(oa !== ob) return oa - ob;
+          return a.nombre.localeCompare(b.nombre,"es");
+        });
+
+      if(seleccion.length === 0){
+        alert("No hay talleres asignados a " + fleteroClave + " con cantidad cargada.");
         return;
       }
 
-      // Aseguro que esta vuelta esté expandida
-      card.classList.remove("collapsed");
-      const icon = card.querySelector(".toggle-icon");
-      if(icon) icon.textContent = "▼";
+      panelFletero = fleteroClave;
+      panelItems = seleccion.map(t => ({
+        taller: t.nombre,
+        vuelta: t.vuelta,
+        cantidad: Number(t.cantidad) || 0,
+        obs: t.obs || ""
+      }));
 
-      // Oculto otras vueltas
-      const todasCards = document.querySelectorAll(".vuelta-card");
-      todasCards.forEach(c => {
-        const v = parseInt(c.getAttribute("data-vuelta"),10);
-        if(v !== vuelta) c.classList.add("print-hidden");
-      });
+      ordenFleteroNombreEl.textContent = fleteroClave;
+      renderOrdenPanel();
 
-      // Oculto filas de esta vuelta que no están seleccionadas en TIENE
-      const filasOcultas = [];
-      rows.forEach(row => {
-        const chkTiene = row.querySelector(".chk-tiene");
-        if(!chkTiene || !chkTiene.checked){
-          row.classList.add("print-hidden");
-          filasOcultas.push(row);
-        }
-      });
-
-      window.print();
-
-      // Restauro
-      todasCards.forEach(c => c.classList.remove("print-hidden"));
-      filasOcultas.forEach(r => r.classList.remove("print-hidden"));
+      ordenOverlay.style.display = "flex";
+      document.body.classList.add("orden-open");
     }
 
-    function initBotonesVuelta(){
-      const printBtns = document.querySelectorAll(".btn-print-vuelta");
-      printBtns.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const v = parseInt(btn.getAttribute("data-vuelta"),10);
-          if(!isNaN(v)) imprimirVuelta(v);
-        });
-      });
+    function cerrarOrden(){
+      ordenOverlay.style.display = "none";
+      document.body.classList.remove("orden-open");
+    }
 
-      const waBtns = document.querySelectorAll(".btn-wa-vuelta");
-      waBtns.forEach(btn => {
+    function initBotonesFletero(){
+      const botones = document.querySelectorAll(".btn-print-fletero");
+      botones.forEach(btn => {
         btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const v = parseInt(btn.getAttribute("data-vuelta"),10);
-          if(!isNaN(v)) generarRutaPorVuelta(v);
+          e.preventDefault();
+          const fle = btn.getAttribute("data-fletero");
+          if(!fle) return;
+          abrirOrdenFletero(fle);
         });
       });
     }
@@ -1143,49 +1260,25 @@
         if(!header) return;
 
         header.addEventListener("click", (e) => {
-          if(e.target.closest(".btn-sec")) return;
+          if(e.target.closest("button")) return;
           const isCollapsed = card.classList.toggle("collapsed");
           if(icon) icon.textContent = isCollapsed ? "►" : "▼";
         });
       });
     }
 
-    // Selección rápida solo afecta WSP (WhatsApp)
-    function aplicarSeleccionRapida(vuelta, mode){
-      const card = document.querySelector('.vuelta-card[data-vuelta="'+vuelta+'"]');
-      if(!card) return;
+    function initTabs(){
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabPanels = document.querySelectorAll(".tab-panel");
 
-      const rows = card.querySelectorAll("tbody tr");
-      if(rows.length === 0) return;
-
-      rows.forEach(row => {
-        const chkWsp = row.querySelector(".chk-wsp");
-        const inpCant = row.querySelector(".input-num");
-        if(!chkWsp) return;
-
-        let n = parseInt(inpCant && inpCant.value ? inpCant.value : "0", 10);
-        if(isNaN(n) || n < 0) n = 0;
-
-        if(mode === "all"){
-          chkWsp.checked = true;
-        }else if(mode === "with-cant"){
-          chkWsp.checked = n > 0;
-        }else if(mode === "none"){
-          chkWsp.checked = false;
-        }
-      });
-    }
-
-    function initSeleccionRapida(){
-      const botones = document.querySelectorAll(".btn-sel");
-      botones.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const v = parseInt(btn.getAttribute("data-vuelta"),10);
-          const mode = btn.getAttribute("data-mode");
-          if(isNaN(v) || !mode) return;
-          aplicarSeleccionRapida(v, mode);
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const tab = btn.dataset.tab;
+          tabButtons.forEach(b => b.classList.toggle("active", b === btn));
+          tabPanels.forEach(p => {
+            const id = "tab-" + tab;
+            p.classList.toggle("active", p.id === id);
+          });
         });
       });
     }
@@ -1202,19 +1295,26 @@
         const arr = [];
         snap2.forEach(d => {
           const data = d.data();
-          // Forzamos nombres actualizados aunque en la DB estén viejos
-          let nombre = data.nombre;
+          let nombre = data.nombre || "";
           if(d.id === "acosta") nombre = "Rosso";
           if(d.id === "silvana-calera") nombre = "Calera Silvana";
           if(d.id === "calera-torres-gnc") nombre = "Calera Torres";
 
+          const fleFallback =
+            data.fletero ||
+            (data.asignAgustin ? "Agustin" :
+             data.asignNano ? "Nano" :
+             data.asignRodrigo ? "Rodrigo" :
+             data.asignJoaquin ? "Joaquin" : "");
+
           arr.push({
             id: d.id,
             nombre,
-            vuelta: data.vuelta,
-            cilindrosPend: data.cilindrosPend ?? 0,
+            vuelta: data.vuelta ?? 1,
             cantidad: data.cantidad ?? 0,
-            obs: data.obs || ""
+            obs: data.obs || "",
+            fletero: fleFallback || "",
+            estado: data.estado || "retiro"
           });
         });
         talleres = arr;
@@ -1222,10 +1322,14 @@
       });
 
       if(btnReset) btnReset.addEventListener("click", reiniciarDia);
+      if(ordenCerrarBtn) ordenCerrarBtn.addEventListener("click", cerrarOrden);
+      if(ordenImprimirBtn) ordenImprimirBtn.addEventListener("click", () => {
+        window.print();
+      });
 
-      initBotonesVuelta();
+      initBotonesFletero();
       initCollapsibles();
-      initSeleccionRapida();
+      initTabs();
     }
 
     inicializarDatos();
