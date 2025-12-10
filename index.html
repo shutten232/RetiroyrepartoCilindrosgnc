@@ -351,6 +351,9 @@
     tbody tr.tiene{
       background:#fff9d6;
     }
+    .prioridad-row{
+      background:#fee2e2 !important;
+    }
 
     .col-taller{ min-width:180px; }
     .col-fletero{ width:130px; text-align:left; }
@@ -616,6 +619,7 @@
       .estado-resumen,
       .estado-filtros,
       .estado-botones-masivo,
+      #tab-prioridad,
       .splash-overlay{
         display:none !important;
       }
@@ -720,6 +724,7 @@
     <nav class="tabs">
       <button class="tab-btn active" data-tab="carga">Carga y reparto</button>
       <button class="tab-btn" data-tab="estado">Estado cilindros</button>
+      <button class="tab-btn" data-tab="prioridad">Ingreso / prioridad</button>
     </nav>
 
     <!-- TAB CARGA -->
@@ -911,14 +916,47 @@
         </table>
       </div>
     </section>
+
+    <!-- TAB PRIORIDAD -->
+    <section id="tab-prioridad" class="tab-panel">
+      <section class="estado-info">
+        Marcá qué talleres son prioritarios para el banco.
+        Solo se muestran talleres con cilindros cargados (cantidad &gt; 0).
+        Después podés armar el orden e imprimir la lista de prioridad.
+      </section>
+
+      <section class="fleteros-actions">
+        <span class="fleteros-title">Prioridad</span>
+        <span style="font-size:0.85rem;color:var(--texto-suave);">
+          Tildá los talleres prioritarios. Luego usá el botón para ordenar e imprimir.
+        </span>
+        <button id="btn-prioridad-orden" class="btn-fletero">Ordenar / Imprimir prioridad</button>
+      </section>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-taller">Taller</th>
+              <th>Vuelta</th>
+              <th class="col-fletero">Fletero</th>
+              <th class="col-cant">Cant.</th>
+              <th>Prioritario</th>
+              <th class="col-obs">Observaciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-prioridad"></tbody>
+        </table>
+      </div>
+    </section>
   </div>
 
   <!-- PANEL ORDEN / IMPRESIÓN -->
   <div id="orden-overlay" class="orden-overlay">
     <div class="orden-card">
       <div class="orden-header">
-        <h2>Orden de talleres – Fletero <span id="orden-fletero-nombre"></span></h2>
-        <p>Usá las flechas para acomodar el recorrido. Después imprimís esta lista (PHS + observaciones).</p>
+        <h2>Orden de talleres – <span id="orden-fletero-nombre"></span></h2>
+        <p>Usá las flechas para acomodar el recorrido / ingreso. Después imprimís esta lista (PHS + observaciones).</p>
       </div>
       <div class="orden-table-wrap">
         <table class="orden-table">
@@ -1054,6 +1092,7 @@
     const tbodyV2 = document.getElementById("tbody-v2");
     const tbodyV3 = document.getElementById("tbody-v3");
     const tbodyEstado = document.getElementById("tbody-estado");
+    const tbodyPrioridad = document.getElementById("tbody-prioridad");
 
     const cilTotalGeneralEl = document.getElementById("cil-total-general");
     const cilV1ResumenEl = document.getElementById("cil-v1");
@@ -1074,6 +1113,8 @@
     const btnEstadoTodosProceso = document.getElementById("btn-estado-todos-proceso");
     const btnEstadoTodosListo = document.getElementById("btn-estado-todos-listo");
     const btnEstadoTodosEntregado = document.getElementById("btn-estado-todos-entregado");
+
+    const btnPrioridadOrden = document.getElementById("btn-prioridad-orden");
 
     const ordenOverlay = document.getElementById("orden-overlay");
     const ordenFleteroNombreEl = document.getElementById("orden-fletero-nombre");
@@ -1107,8 +1148,13 @@
       await updateDoc(ref, { estado: estado });
     }
 
+    async function actualizarPrioritario(id, valor){
+      const ref = doc(colTalleres, id);
+      await updateDoc(ref, { prioritario: !!valor });
+    }
+
     async function reiniciarDia(){
-      const ok = confirm("¿Reiniciar TODOS los datos de hoy? (cantidades, fletero, observaciones, estado)?");
+      const ok = confirm("¿Reiniciar TODOS los datos de hoy? (cantidades, fletero, observaciones, estado, prioridad)?");
       if(!ok) return;
       const snap = await getDocs(colTalleres);
       const batch = writeBatch(db);
@@ -1117,7 +1163,8 @@
           cantidad: 0,
           obs: "",
           fletero: "",
-          estado: "retiro"
+          estado: "retiro",
+          prioritario: false
         });
       });
       await batch.commit();
@@ -1297,11 +1344,70 @@
       });
     }
 
+    function renderPrioridad(){
+      if(!tbodyPrioridad) return;
+      tbodyPrioridad.innerHTML = "";
+
+      let lista = talleres
+        .filter(t => (Number(t.cantidad) || 0) > 0)
+        .sort((a,b) => {
+          if(!!a.prioritario !== !!b.prioritario){
+            return a.prioritario ? -1 : 1; // prioritarios arriba
+          }
+          if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
+          return a.nombre.localeCompare(b.nombre,"es");
+        });
+
+      lista.forEach(t => {
+        const c = Number(t.cantidad) || 0;
+        const fle = t.fletero || "";
+        const tr = document.createElement("tr");
+        if(t.prioritario) tr.classList.add("prioridad-row");
+
+        const tdTaller = document.createElement("td");
+        tdTaller.className = "col-taller";
+        tdTaller.textContent = t.nombre;
+        tr.appendChild(tdTaller);
+
+        const tdVuelta = document.createElement("td");
+        tdVuelta.textContent = "V" + (t.vuelta || "?");
+        tr.appendChild(tdVuelta);
+
+        const tdFle = document.createElement("td");
+        tdFle.className = "col-fletero";
+        tdFle.textContent = fle || "-";
+        tr.appendChild(tdFle);
+
+        const tdCant = document.createElement("td");
+        tdCant.className = "col-cant";
+        tdCant.textContent = c;
+        tr.appendChild(tdCant);
+
+        const tdPri = document.createElement("td");
+        const chk = document.createElement("input");
+        chk.type = "checkbox";
+        chk.checked = !!t.prioritario;
+        chk.addEventListener("change", () => {
+          actualizarPrioritario(t.id, chk.checked);
+        });
+        tdPri.appendChild(chk);
+        tr.appendChild(tdPri);
+
+        const tdObs = document.createElement("td");
+        tdObs.className = "col-obs";
+        tdObs.textContent = t.obs || "";
+        tr.appendChild(tdObs);
+
+        tbodyPrioridad.appendChild(tr);
+      });
+    }
+
     function render(){
       renderVuelta(1, tbodyV1);
       renderVuelta(2, tbodyV2);
       renderVuelta(3, tbodyV3);
       renderEstado();
+      renderPrioridad();
 
       let total = 0, v1 = 0, v2 = 0, v3 = 0;
 
@@ -1441,7 +1547,50 @@
       }
 
       panelItems = seleccion;
-      ordenFleteroNombreEl.textContent = fleteroClave;
+      ordenFleteroNombreEl.textContent = "Fletero " + fleteroClave;
+      renderOrdenPanel();
+
+      ordenOverlay.style.display = "flex";
+      document.body.classList.add("orden-open");
+    }
+
+    function abrirOrdenPrioridad(){
+      const seleccion = [];
+      talleres.forEach(t => {
+        if(!t.prioritario) return;
+        let cantidad = Number(t.cantidad) || 0;
+        let obs = t.obs || "";
+
+        const fila = document.querySelector('tr[data-id="' + t.id + '"]');
+        if(fila){
+          const inpCant = fila.querySelector('.input-num');
+          const inpObs = fila.querySelector('.input-text');
+          if(inpCant){
+            const v = parseInt(inpCant.value, 10);
+            if(!isNaN(v) && v >= 0) cantidad = v;
+          }
+          if(inpObs){
+            obs = inpObs.value || "";
+          }
+        }
+
+        if(cantidad > 0 || (obs && obs.trim() !== "")){
+          seleccion.push({
+            taller: t.nombre,
+            vuelta: t.vuelta,
+            cantidad,
+            obs
+          });
+        }
+      });
+
+      if(seleccion.length === 0){
+        alert("No hay talleres marcados como prioritarios con cilindros u observaciones para imprimir.");
+        return;
+      }
+
+      panelItems = seleccion;
+      ordenFleteroNombreEl.textContent = "PRIORIDAD";
       renderOrdenPanel();
 
       ordenOverlay.style.display = "flex";
@@ -1530,7 +1679,8 @@
             cantidad: data.cantidad ?? 0,
             obs: data.obs || "",
             fletero: fleFallback || "",
-            estado: data.estado || "retiro"
+            estado: data.estado || "retiro",
+            prioritario: !!data.prioritario
           });
         });
         talleres = arr;
@@ -1563,6 +1713,13 @@
       if(btnEstadoTodosEntregado){
         btnEstadoTodosEntregado.addEventListener("click", () => {
           cambiarEstadoMasivo("entregado");
+        });
+      }
+
+      if(btnPrioridadOrden){
+        btnPrioridadOrden.addEventListener("click", (e) => {
+          e.preventDefault();
+          abrirOrdenPrioridad();
         });
       }
 
