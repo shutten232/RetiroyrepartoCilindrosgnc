@@ -597,7 +597,7 @@
       background:#b91c1c;
     }
 
-    /* IMPRESIÓN GRANDE A4 */
+    /* IMPRESIÓN GRANDE A4 – LETRA BIEN GRANDE Y CLARA */
     @media print{
       @page{
         size:A4 portrait;
@@ -606,7 +606,7 @@
 
       body{
         background:#ffffff;
-        font-size:20px;
+        font-size:24px; /* base grande */
       }
 
       .header,
@@ -642,19 +642,24 @@
       }
 
       .orden-header h2{
-        font-size:26px;
+        font-size:30px;
         margin-bottom:10px;
+        font-weight:800;
       }
 
       .orden-header p{
-        font-size:16px;
-        margin-bottom:12px;
+        font-size:20px;
+        margin-bottom:15px;
       }
 
       .orden-table th,
       .orden-table td{
-        font-size:18px;
-        padding:10px 12px;
+        font-size:22px;
+        padding:12px 14px;
+      }
+
+      .orden-table th{
+        font-weight:800;
       }
 
       .orden-footer{
