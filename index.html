@@ -478,25 +478,19 @@
       background:#fff5f5;
     }
 
+    /* COLORES ESTADOS: retiro gris, proceso amarillo, listo azul, entregado verde */
     .estado-retiro{
-  background:#e5e7eb !important;
-}
-
-/* PROCESO = AMARILLO */
-.estado-proceso{
-  background:#fef9c3 !important;
-}
-
-/* LISTO = AZUL */
-.estado-listo{
-  background:#dbeafe !important;
-}
-
-/* ENTREGADO = VERDE */
-.estado-entregado{
-  background:#dcfce7 !important;
-}
-
+      background:#e5e7eb !important;
+    }
+    .estado-proceso{
+      background:#fef9c3 !important;
+    }
+    .estado-listo{
+      background:#dbeafe !important;
+    }
+    .estado-entregado{
+      background:#dcfce7 !important;
+    }
 
     /* PANEL ORDEN / IMPRESIÓN */
     .orden-overlay{
@@ -856,13 +850,13 @@
       <section class="estado-info">
         Solo aparecen talleres con cilindros cargados (cantidad &gt; 0).
         <br>
-        <span class="estado-tag">• En retiro:</span> cilindros todavía en taller / en viaje.
+        <span class="estado-tag">• En retiro (gris):</span> cilindros todavía en taller / en viaje.
         <br>
-        <span class="estado-tag">• Proceso:</span> cilindros en CRPC (prueba, armado, etc.).
+        <span class="estado-tag">• Proceso (amarillo):</span> cilindros en CRPC (prueba, armado, etc.).
         <br>
-        <span class="estado-tag">• Listo:</span> cilindros terminados para entregar.
+        <span class="estado-tag">• Listo (azul):</span> cilindros terminados para entregar.
         <br>
-        <span class="estado-tag">• Entregado:</span> cilindros ya devueltos al taller / cliente.
+        <span class="estado-tag">• Entregado (verde):</span> cilindros ya devueltos al taller / cliente.
       </section>
 
       <section class="estado-resumen">
@@ -1041,9 +1035,9 @@
       { id: "enero-gas", nombre: "Enero Gas", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "pepe", nombre: "Pepe", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
 
-      { id: "san-francisco-gnc", nombre: "San Francisco GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "genovesio", nombre: "Genovesio", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "gnc-giordano", nombre: "GNC Giordano", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "san-francisco-gnc", nombre: "Sola", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "genovesio", nombre: "Genovesio - TTE EL GRINGO - RINCON 1450", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "gnc-giordano", nombre: "GNC Giordano - TTE MICROCARGAS - F.FRIAS 924", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "tecno-gnc", nombre: "Tecno GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "marcos-gnc", nombre: "Marcos GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "franco-cba", nombre: "Franco cba", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
@@ -1052,7 +1046,7 @@
       { id: "misiti", nombre: "Misiti", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "enjom", nombre: "Enjom", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "alemanes", nombre: "Alemanes", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "acosta", nombre: "Rosso", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "acosta", nombre: "Rosso - TTE MICROCARGAS - F.FRIAS 924", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
       { id: "ceriani", nombre: "CERIANI", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" }
     ];
 
@@ -1353,7 +1347,7 @@
       await batch.commit();
     }
 
-    /* PANEL ORDEN – incluye PHS 0 con observaciones */
+    /* PANEL ORDEN – incluye PHS 0 si hay observaciones */
     function renderOrdenPanel(){
       ordenTbodyEl.innerHTML = "";
       panelItems.forEach((item, idx) => {
@@ -1515,9 +1509,12 @@
         snap2.forEach(d => {
           const data = d.data();
           let nombre = data.nombre || "";
-          if(d.id === "acosta") nombre = "Rosso";
+          if(d.id === "acosta") nombre = "Rosso - TTE MICROCARGAS - F.FRIAS 924";
           if(d.id === "silvana-calera") nombre = "Calera Silvana";
           if(d.id === "calera-torres-gnc") nombre = "Calera Torres";
+          if(d.id === "san-francisco-gnc") nombre = "Sola";
+          if(d.id === "genovesio") nombre = "Genovesio - TTE EL GRINGO - RINCON 1450";
+          if(d.id === "gnc-giordano") nombre = "GNC Giordano - TTE MICROCARGAS - F.FRIAS 924";
 
           const fleFallback =
             data.fletero ||
