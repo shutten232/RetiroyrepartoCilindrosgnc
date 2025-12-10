@@ -323,7 +323,7 @@
       display:none;
     }
 
-    /* TABLAS */
+    /* TABLAS PRINCIPALES */
     .tabla-wrap{
       overflow-x:auto;
     }
@@ -479,14 +479,24 @@
     }
 
     .estado-retiro{
-      background:#fff9d6 !important;
-    }
-    .estado-proceso{
-      background:#e0f2fe !important;
-    }
-    .estado-listo{
-      background:#dcfce7 !important;
-    }
+  background:#e5e7eb !important;
+}
+
+/* PROCESO = AMARILLO */
+.estado-proceso{
+  background:#fef9c3 !important;
+}
+
+/* LISTO = AZUL */
+.estado-listo{
+  background:#dbeafe !important;
+}
+
+/* ENTREGADO = VERDE */
+.estado-entregado{
+  background:#dcfce7 !important;
+}
+
 
     /* PANEL ORDEN / IMPRESIÓN */
     .orden-overlay{
@@ -630,7 +640,7 @@
         max-width:none;
         max-height:none;
         padding:10mm 10mm;
-        min-height:80vh; /* ocupa casi toda la hoja */
+        min-height:80vh;
       }
 
       .orden-header h2{
@@ -851,6 +861,8 @@
         <span class="estado-tag">• Proceso:</span> cilindros en CRPC (prueba, armado, etc.).
         <br>
         <span class="estado-tag">• Listo:</span> cilindros terminados para entregar.
+        <br>
+        <span class="estado-tag">• Entregado:</span> cilindros ya devueltos al taller / cliente.
       </section>
 
       <section class="estado-resumen">
@@ -865,6 +877,10 @@
         <div class="estado-res-card">
           <div class="estado-res-label">Listo</div>
           <div class="estado-res-value" id="estado-listo-count">0</div>
+        </div>
+        <div class="estado-res-card">
+          <div class="estado-res-label">Entregado</div>
+          <div class="estado-res-value" id="estado-entregado-count">0</div>
         </div>
       </section>
 
@@ -883,6 +899,7 @@
       <section class="estado-botones-masivo">
         <button id="btn-estado-todos-proceso" class="estado-btn-masivo">Pasar todos a Proceso</button>
         <button id="btn-estado-todos-listo" class="estado-btn-masivo">Pasar todos a Listo</button>
+        <button id="btn-estado-todos-entregado" class="estado-btn-masivo">Pasar todos a Entregado</button>
       </section>
 
       <div class="tabla-wrap">
@@ -907,7 +924,7 @@
     <div class="orden-card">
       <div class="orden-header">
         <h2>Orden de talleres – Fletero <span id="orden-fletero-nombre"></span></h2>
-        <p>Usá las flechas para acomodar el recorrido. Después imprimís esta lista (incluye observaciones).</p>
+        <p>Usá las flechas para acomodar el recorrido. Después imprimís esta lista (PHS + observaciones).</p>
       </div>
       <div class="orden-table-wrap">
         <table class="orden-table">
@@ -1058,9 +1075,11 @@
     const estadoRetiroCountEl = document.getElementById("estado-retiro-count");
     const estadoProcesoCountEl = document.getElementById("estado-proceso-count");
     const estadoListoCountEl = document.getElementById("estado-listo-count");
+    const estadoEntregadoCountEl = document.getElementById("estado-entregado-count");
     const estadoFiltroFletero = document.getElementById("estado-filtro-fletero");
     const btnEstadoTodosProceso = document.getElementById("btn-estado-todos-proceso");
     const btnEstadoTodosListo = document.getElementById("btn-estado-todos-listo");
+    const btnEstadoTodosEntregado = document.getElementById("btn-estado-todos-entregado");
 
     const ordenOverlay = document.getElementById("orden-overlay");
     const ordenFleteroNombreEl = document.getElementById("orden-fletero-nombre");
@@ -1195,7 +1214,8 @@
       if(x === "retiro") return 1;
       if(x === "proceso") return 2;
       if(x === "listo") return 3;
-      return 4;
+      if(x === "entregado") return 4;
+      return 5;
     }
 
     function renderEstado(){
@@ -1221,18 +1241,20 @@
         return a.nombre.localeCompare(b.nombre,"es");
       });
 
-      let retiroCount = 0, procesoCount = 0, listoCount = 0;
+      let retiroCount = 0, procesoCount = 0, listoCount = 0, entregadoCount = 0;
       lista.forEach(t => {
         const c = Number(t.cantidad) || 0;
         const e = (t.estado || "retiro").toLowerCase();
         if(e === "proceso") procesoCount += c;
         else if(e === "listo") listoCount += c;
+        else if(e === "entregado") entregadoCount += c;
         else retiroCount += c;
       });
 
       if(estadoRetiroCountEl) estadoRetiroCountEl.textContent = retiroCount;
       if(estadoProcesoCountEl) estadoProcesoCountEl.textContent = procesoCount;
       if(estadoListoCountEl) estadoListoCountEl.textContent = listoCount;
+      if(estadoEntregadoCountEl) estadoEntregadoCountEl.textContent = entregadoCount;
 
       lista.forEach(t => {
         const c = Number(t.cantidad) || 0;
@@ -1242,6 +1264,7 @@
         const tr = document.createElement("tr");
         if(estadoVal === "proceso") tr.classList.add("estado-proceso");
         else if(estadoVal === "listo") tr.classList.add("estado-listo");
+        else if(estadoVal === "entregado") tr.classList.add("estado-entregado");
         else tr.classList.add("estado-retiro");
 
         const tdTaller = document.createElement("td");
@@ -1267,6 +1290,7 @@
           <option value="retiro">En retiro</option>
           <option value="proceso">Proceso</option>
           <option value="listo">Listo</option>
+          <option value="entregado">Entregado</option>
         `;
         selEstado.value = estadoVal;
         selEstado.addEventListener("change", () => {
@@ -1329,8 +1353,7 @@
       await batch.commit();
     }
 
-    /* PANEL ORDEN – toma cantidad y observaciones aunque no estén guardadas,
-       e incluye talleres con cantidad > 0 o con observaciones llenas */
+    /* PANEL ORDEN – incluye PHS 0 con observaciones */
     function renderOrdenPanel(){
       ordenTbodyEl.innerHTML = "";
       panelItems.forEach((item, idx) => {
@@ -1352,7 +1375,7 @@
 
         const tdCant = document.createElement("td");
         tdCant.className = "orden-col-cant";
-        tdCant.textContent = item.cantidad || item.cantidad === 0 ? item.cantidad : "";
+        tdCant.textContent = item.cantidad ?? "";
         tr.appendChild(tdCant);
 
         const tdObs = document.createElement("td");
@@ -1408,9 +1431,6 @@
           }
         }
 
-        // INCLUIR SI:
-        // - tiene cilindros (>0) O
-        // - no tiene cilindros pero tiene observaciones cargadas
         if(cantidad > 0 || (obs && obs.trim() !== "")){
           seleccion.push({
             taller: t.nombre,
@@ -1541,6 +1561,11 @@
       if(btnEstadoTodosListo){
         btnEstadoTodosListo.addEventListener("click", () => {
           cambiarEstadoMasivo("listo");
+        });
+      }
+      if(btnEstadoTodosEntregado){
+        btnEstadoTodosEntregado.addEventListener("click", () => {
+          cambiarEstadoMasivo("entregado");
         });
       }
 
