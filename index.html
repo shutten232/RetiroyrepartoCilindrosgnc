@@ -997,6 +997,10 @@
       updateDoc,
       writeBatch
     } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    import {
+      getAuth,
+      signInAnonymously
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyC7p0rPT0sB4RGOqgHOu8gjdC8hcjuMO-8",
@@ -1009,6 +1013,10 @@
     };
 
     const app = initializeApp(firebaseConfig);
+
+    // AUTH ANÓNIMO (NECESARIO SI TUS REGLAS PIDEN request.auth != null)
+    const auth = getAuth(app);
+
     const db = getFirestore(app);
     const colTalleres = collection(db, "talleres_reparto");
 
@@ -1357,7 +1365,7 @@
         .filter(t => (Number(t.cantidad) || 0) > 0)
         .sort((a,b) => {
           if(!!a.prioritario !== !!b.prioritario){
-            return a.prioritario ? -1 : 1; // prioritarios arriba
+            return a.prioritario ? -1 : 1;
           }
           if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
           return a.nombre.localeCompare(b.nombre,"es");
@@ -1458,7 +1466,6 @@
       await batch.commit();
     }
 
-    /* PANEL ORDEN – incluye PHS 0 si hay observaciones */
     function renderOrdenPanel(){
       ordenTbodyEl.innerHTML = "";
       panelItems.forEach((item, idx) => {
@@ -1733,8 +1740,18 @@
       initTabs();
     }
 
-    inicializarDatos();
+    async function boot(){
+      try{
+        await signInAnonymously(auth);
+      }catch(e){
+        console.error("AUTH ERROR:", e);
+        alert("ERROR AUTH: " + (e?.code || "desconocido") + "\nRevisá: Authentication > Sign-in method (Anonymous habilitado) y Authorized domains.");
+        return;
+      }
+      await inicializarDatos();
+    }
+
+    boot();
   </script>
 </body>
 </html>
-
