@@ -30,14 +30,9 @@
       font-size:16px;
     }
 
-    body.orden-open{
-      overflow:hidden;
-    }
+    body.orden-open{ overflow:hidden; }
 
-    .page{
-      max-width:1100px;
-      margin:0 auto;
-    }
+    .page{ max-width:1100px; margin:0 auto; }
 
     /* SPLASH / LOGO */
     .splash-overlay{
@@ -50,42 +45,22 @@
       z-index:9000;
       animation:splashFade 2.7s ease-in-out forwards;
     }
-    .splash-logo-wrapper{
-      text-align:center;
-      color:#ffffff;
-    }
+    .splash-logo-wrapper{ text-align:center; color:#ffffff; }
     .splash-logo-circle{
-      width:96px;
-      height:96px;
-      border-radius:50%;
+      width:96px;height:96px;border-radius:50%;
       border:4px solid var(--amarillo);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:56px;
-      font-weight:900;
-      color:var(--amarillo);
+      display:flex;align-items:center;justify-content:center;
+      font-size:56px;font-weight:900;color:var(--amarillo);
       box-shadow:0 6px 18px rgba(0,0,0,0.4);
       margin:0 auto 12px;
       background:rgba(0,0,0,0.15);
       animation:splashLogo 2.7s ease-in-out forwards;
     }
-    .splash-text-main{
-      font-size:1.4rem;
-      font-weight:800;
-      letter-spacing:1px;
-    }
-    .splash-text-sub{
-      font-size:0.95rem;
-      margin-top:3px;
-      opacity:0.9;
-    }
+    .splash-text-main{ font-size:1.4rem;font-weight:800;letter-spacing:1px; }
+    .splash-text-sub{ font-size:0.95rem;margin-top:3px;opacity:0.9; }
 
     @keyframes splashFade{
-      0%{opacity:0;}
-      10%{opacity:1;}
-      70%{opacity:1;}
-      100%{opacity:0;}
+      0%{opacity:0;} 10%{opacity:1;} 70%{opacity:1;} 100%{opacity:0;}
     }
     @keyframes splashLogo{
       0%{transform:scale(0.7);opacity:0;}
@@ -105,62 +80,34 @@
       align-items:center;
       margin-bottom:10px;
     }
-    .header-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
+    .header-left{ display:flex;align-items:center;gap:10px; }
     .logo{
-      width:44px;
-      height:44px;
-      border-radius:50%;
+      width:44px;height:44px;border-radius:50%;
       background:var(--rojo);
       color:var(--amarillo);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:26px;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;font-size:26px;
       box-shadow:0 3px 8px rgba(0,0,0,0.25);
     }
     .header-title{
-      margin:0;
-      font-size:1.3rem;
-      font-weight:800;
-      color:var(--rojo);
+      margin:0;font-size:1.3rem;font-weight:800;color:var(--rojo);
     }
-    .header-sub{
-      margin:2px 0 0;
-      font-size:0.9rem;
-      color:var(--texto-suave);
-    }
-    .header-right{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:6px;
-    }
+    .header-sub{ margin:2px 0 0;font-size:0.9rem;color:var(--texto-suave); }
+    .header-right{ display:flex;flex-direction:column;align-items:flex-end;gap:6px; }
     .chip{
-      background:#ffe8e8;
-      color:var(--rojo-osc);
-      padding:3px 8px;
-      border-radius:999px;
-      font-size:0.8rem;
-      font-weight:600;
+      background:#ffe8e8;color:var(--rojo-osc);
+      padding:3px 8px;border-radius:999px;
+      font-size:0.8rem;font-weight:600;
     }
     .btn-reset{
-      background:#ffffff;
-      color:var(--rojo);
+      background:#ffffff;color:var(--rojo);
       border:2px solid var(--rojo);
       border-radius:999px;
       padding:5px 12px;
-      font-size:0.9rem;
-      font-weight:700;
+      font-size:0.9rem;font-weight:700;
       cursor:pointer;
     }
-    .btn-reset:hover{
-      background:#fff5f5;
-    }
+    .btn-reset:hover{ background:#fff5f5; }
 
     /* TABS */
     .tabs{
@@ -183,16 +130,9 @@
       color:var(--texto-suave);
       cursor:pointer;
     }
-    .tab-btn.active{
-      background:var(--rojo);
-      color:#ffffff;
-    }
-    .tab-panel{
-      display:none;
-    }
-    .tab-panel.active{
-      display:block;
-    }
+    .tab-btn.active{ background:var(--rojo); color:#ffffff; }
+    .tab-panel{ display:none; }
+    .tab-panel.active{ display:block; }
 
     /* PASOS */
     .pasos{
@@ -203,34 +143,22 @@
       margin-bottom:10px;
       font-size:0.9rem;
     }
-    .pasos strong{
-      color:var(--rojo-osc);
-    }
+    .pasos strong{ color:var(--rojo-osc); }
 
     /* RESUMEN GENERAL */
     .resumen{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:8px;
+      display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;
     }
     .resumen-card{
-      flex:1 1 155px;
-      min-width:155px;
-      background:var(--card);
-      border-radius:8px;
-      border:1px solid var(--borde);
+      flex:1 1 155px;min-width:155px;
+      background:var(--card);border-radius:8px;border:1px solid var(--borde);
       padding:8px 10px;
     }
     .res-label{
-      font-size:0.8rem;
-      color:var(--texto-suave);
+      font-size:0.8rem;color:var(--texto-suave);
       text-transform:uppercase;
     }
-    .res-value{
-      font-size:1.5rem;
-      font-weight:800;
-    }
+    .res-value{ font-size:1.5rem;font-weight:800; }
 
     /* FLETEROS */
     .fleteros-actions{
@@ -246,8 +174,7 @@
       font-size:0.85rem;
     }
     .fleteros-title{
-      font-weight:700;
-      color:var(--rojo-osc);
+      font-weight:700;color:var(--rojo-osc);
       margin-right:4px;
     }
     .btn-fletero{
@@ -260,17 +187,10 @@
       font-weight:700;
       cursor:pointer;
     }
-    .btn-fletero:hover{
-      background:#fff5f5;
-    }
+    .btn-fletero:hover{ background:#fff5f5; }
 
     /* VUELTAS */
-    .vueltas{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-bottom:10px;
-    }
+    .vueltas{ display:flex;flex-direction:column;gap:10px;margin-bottom:10px; }
     .vuelta-card{
       background:var(--card);
       border-radius:8px;
@@ -285,48 +205,24 @@
       cursor:pointer;
     }
     .vuelta-info{
-      font-size:1rem;
-      font-weight:800;
-      display:flex;
-      align-items:center;
-      gap:6px;
+      font-size:1rem;font-weight:800;
+      display:flex;align-items:center;gap:6px;
     }
-    .vuelta-nombre{
-      color:var(--rojo);
-      font-size:1.05rem;
-    }
+    .vuelta-nombre{ color:var(--rojo); font-size:1.05rem; }
     .toggle-icon{
-      font-size:0.9rem;
-      width:14px;
-      text-align:center;
-      color:var(--texto-suave);
+      font-size:0.9rem;width:14px;text-align:center;color:var(--texto-suave);
     }
-    .vuelta-total{
-      font-size:0.9rem;
-      font-weight:700;
-    }
-    .vuelta-total span{
-      color:var(--rojo-osc);
-    }
+    .vuelta-total{ font-size:0.9rem;font-weight:700; }
+    .vuelta-total span{ color:var(--rojo-osc); }
     .vuelta-buttons{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      align-items:flex-end;
-      font-size:0.78rem;
-      color:var(--texto-suave);
+      display:flex;flex-direction:column;gap:2px;align-items:flex-end;
+      font-size:0.78rem;color:var(--texto-suave);
     }
-    .vuelta-body{
-      margin-top:4px;
-    }
-    .vuelta-card.collapsed .vuelta-body{
-      display:none;
-    }
+    .vuelta-body{ margin-top:4px; }
+    .vuelta-card.collapsed .vuelta-body{ display:none; }
 
     /* TABLAS PRINCIPALES */
-    .tabla-wrap{
-      overflow-x:auto;
-    }
+    .tabla-wrap{ overflow-x:auto; }
     table{
       width:100%;
       border-collapse:collapse;
@@ -338,31 +234,19 @@
       text-align:left;
       vertical-align:middle;
     }
-    thead{
-      background:#f9f9f9;
-    }
-    th{
-      font-weight:700;
-      color:#333333;
-    }
-    tbody tr:nth-child(even){
-      background:#fafafa;
-    }
-    tbody tr.tiene{
-      background:#fff9d6;
-    }
-    .prioridad-row{
-      background:#fee2e2 !important;
-    }
+    thead{ background:#f9f9f9; }
+    th{ font-weight:700;color:#333333; }
+    tbody tr:nth-child(even){ background:#fafafa; }
+    tbody tr.tiene{ background:#fff9d6; }
 
     .col-taller{ min-width:180px; }
     .col-fletero{ width:130px; text-align:left; }
-    .col-cant{ width:80px; text-align:center; }
+    .col-cant{ width:90px; text-align:center; }
     .col-obs{ min-width:200px; }
 
     .input-num{
       width:100%;
-      max-width:80px;
+      max-width:90px;
       padding:5px 4px;
       font-size:0.95rem;
       text-align:right;
@@ -370,10 +254,8 @@
       border:1px solid #cccccc;
       height:32px;
     }
-    .input-num:focus{
-      border-color:var(--rojo);
-      outline:none;
-    }
+    .input-num:focus{ border-color:var(--rojo);outline:none; }
+
     .input-text{
       width:100%;
       padding:5px 6px;
@@ -382,10 +264,8 @@
       border:1px solid #cccccc;
       height:32px;
     }
-    .input-text:focus{
-      border-color:var(--rojo);
-      outline:none;
-    }
+    .input-text:focus{ border-color:var(--rojo);outline:none; }
+
     .select-fletero,
     .select-estado{
       width:100%;
@@ -398,10 +278,7 @@
       height:32px;
     }
     .select-fletero:focus,
-    .select-estado:focus{
-      border-color:var(--rojo);
-      outline:none;
-    }
+    .select-estado:focus{ border-color:var(--rojo);outline:none; }
 
     /* TAB ESTADO */
     .estado-info{
@@ -413,9 +290,7 @@
       font-size:0.9rem;
       color:var(--texto-suave);
     }
-    .estado-tag{
-      font-weight:600;
-    }
+    .estado-tag{ font-weight:600; }
 
     .estado-resumen{
       display:flex;
@@ -437,10 +312,7 @@
       text-transform:uppercase;
       color:var(--texto-suave);
     }
-    .estado-res-value{
-      font-size:1.1rem;
-      font-weight:700;
-    }
+    .estado-res-value{ font-size:1.1rem;font-weight:700; }
 
     .estado-filtros{
       display:flex;
@@ -450,10 +322,7 @@
       margin-bottom:8px;
       font-size:0.85rem;
     }
-    .estado-filtros label{
-      font-weight:600;
-      color:var(--texto-suave);
-    }
+    .estado-filtros label{ font-weight:600;color:var(--texto-suave); }
     .estado-select{
       padding:4px 6px;
       border-radius:6px;
@@ -477,23 +346,13 @@
       color:var(--rojo);
       cursor:pointer;
     }
-    .estado-btn-masivo:hover{
-      background:#fff5f5;
-    }
+    .estado-btn-masivo:hover{ background:#fff5f5; }
 
     /* COLORES ESTADOS: retiro gris, proceso amarillo, listo azul, entregado verde */
-    .estado-retiro{
-      background:#e5e7eb !important;
-    }
-    .estado-proceso{
-      background:#fef9c3 !important;
-    }
-    .estado-listo{
-      background:#dbeafe !important;
-    }
-    .estado-entregado{
-      background:#dcfce7 !important;
-    }
+    .estado-retiro{ background:#e5e7eb !important; }
+    .estado-proceso{ background:#fef9c3 !important; }
+    .estado-listo{ background:#dbeafe !important; }
+    .estado-entregado{ background:#dcfce7 !important; }
 
     /* PANEL ORDEN / IMPRESIÓN */
     .orden-overlay{
@@ -517,15 +376,8 @@
       flex-direction:column;
       padding:10px 12px;
     }
-    .orden-header h2{
-      margin:0 0 4px;
-      font-size:1rem;
-    }
-    .orden-header p{
-      margin:0;
-      font-size:0.85rem;
-      color:#6b7280;
-    }
+    .orden-header h2{ margin:0 0 4px;font-size:1rem; }
+    .orden-header p{ margin:0;font-size:0.85rem;color:#6b7280; }
     .orden-table-wrap{
       flex:1 1 auto;
       overflow:auto;
@@ -543,13 +395,11 @@
       text-align:left;
       vertical-align:middle;
     }
-    .orden-table thead{
-      background:#f9fafb;
-    }
-    .orden-col-num{ width:32px; text-align:center; }
+    .orden-table thead{ background:#f9fafb; }
+    .orden-col-num{ width:32px;text-align:center; }
     .orden-col-vuelta{ width:70px; }
-    .orden-col-cant{ width:70px; text-align:right; }
-    .orden-col-acciones{ width:80px; text-align:center; }
+    .orden-col-cant{ width:70px;text-align:right; }
+    .orden-col-acciones{ width:80px;text-align:center; }
 
     .orden-btn-small{
       padding:2px 6px;
@@ -560,9 +410,7 @@
       cursor:pointer;
       margin:0 1px;
     }
-    .orden-btn-small:hover{
-      background:#f3f4f6;
-    }
+    .orden-btn-small:hover{ background:#f3f4f6; }
 
     .orden-footer{
       margin-top:8px;
@@ -580,9 +428,7 @@
       font-weight:500;
       cursor:pointer;
     }
-    .orden-btn-sec:hover{
-      background:#f3f4f6;
-    }
+    .orden-btn-sec:hover{ background:#f3f4f6; }
     .orden-btn-main{
       padding:5px 10px;
       border-radius:4px;
@@ -593,109 +439,72 @@
       font-weight:600;
       cursor:pointer;
     }
-    .orden-btn-main:hover{
-      background:#b91c1c;
-    }
+    .orden-btn-main:hover{ background:#b91c1c; }
 
-    /* IMPRESIÓN GRANDE A4 – LETRA BIEN GRANDE Y CLARA */
+    /* IMPRESIÓN A4 */
     @media print{
-      @page{
-        size:A4 portrait;
-        margin:8mm;
-      }
+      @page{ size:A4 portrait; margin:8mm; }
+      body{ background:#ffffff; }
 
-      body{
-        background:#ffffff;
-        font-size:24px; /* base grande */
-      }
-
-      .header,
-      .tabs,
-      .pasos,
-      .resumen,
-      .fleteros-actions,
-      .vueltas,
-      .estado-info,
-      .estado-resumen,
-      .estado-filtros,
-      .estado-botones-masivo,
-      #tab-prioridad,
-      .splash-overlay{
+      /* Cuando imprimimos el checklist de VÁLVULAS: ocultar todo menos tab-valvulas */
+      body.print-valvulas .header,
+      body.print-valvulas .tabs,
+      body.print-valvulas #tab-carga,
+      body.print-valvulas #tab-estado,
+      body.print-valvulas .splash-overlay,
+      body.print-valvulas .orden-overlay{
         display:none !important;
       }
 
-      .orden-overlay{
-        position:static;
-        inset:auto;
+      body.print-valvulas #tab-valvulas{
         display:block !important;
-        background:#ffffff !important;
       }
 
-      .orden-card{
-        box-shadow:none;
+      body.print-valvulas #valv-responsable{
+        border:none !important;
+        border-bottom:2px solid #111 !important;
+        border-radius:0 !important;
+        padding:2px 4px !important;
+        min-width:260px !important;
+        font-size:20px !important;
+      }
+
+      body.print-valvulas #valv-fecha{
+        border:none !important;
+        border-bottom:2px solid #111 !important;
+        border-radius:0 !important;
+        padding:2px 4px !important;
+        min-width:140px !important;
+        font-size:20px !important;
+        background:#fff !important;
+      }
+
+
+      body.print-valvulas #tab-valvulas .estado-info{
         border:none;
-        width:100%;
-        max-width:none;
-        max-height:none;
-        padding:10mm 10mm;
-        min-height:80vh;
-      }
-
-      .orden-header h2{
-        font-size:30px;
+        padding:0;
         margin-bottom:10px;
-        font-weight:800;
       }
 
-      .orden-header p{
-        font-size:20px;
-        margin-bottom:15px;
+      body.print-valvulas table{
+        font-size:16px;
       }
-
-      .orden-table th,
-      .orden-table td{
-        font-size:22px;
-        padding:12px 14px;
-      }
-
-      .orden-table th{
-        font-weight:800;
-      }
-
-      .orden-footer{
-        display:none;
+      body.print-valvulas th, body.print-valvulas td{
+        padding:6px 8px;
       }
     }
 
     @media(max-width:720px){
-      body{
-        font-size:15px;
-        padding:8px;
-      }
-      .header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:6px;
-      }
-      .header-right{
-        align-items:flex-start;
-      }
-      .header-title{
-        font-size:1.1rem;
-      }
-      table{
-        font-size:0.8rem;
-      }
-      th,td{
-        padding:4px 5px;
-      }
+      body{ font-size:15px;padding:8px; }
+      .header{ flex-direction:column;align-items:flex-start;gap:6px; }
+      .header-right{ align-items:flex-start; }
+      .header-title{ font-size:1.1rem; }
+      table{ font-size:0.8rem; }
+      th,td{ padding:4px 5px; }
       .input-num,.input-text,.select-fletero,.select-estado{
-        font-size:0.8rem;
-        height:30px;
+        font-size:0.8rem;height:30px;
       }
-      .col-fletero{
-        width:110px;
-      }
+      .col-fletero{ width:110px; }
     }
   </style>
 </head>
@@ -716,7 +525,7 @@
         <div class="logo">Q</div>
         <div>
           <h1 class="header-title">Retiro de cilindros por taller</h1>
-          <p class="header-sub">Carga de talleres, fleteros y estado general.</p>
+          <p class="header-sub">Carga de talleres, fleteros, estado general y checklist de válvulas.</p>
         </div>
       </div>
       <div class="header-right">
@@ -729,7 +538,7 @@
     <nav class="tabs">
       <button class="tab-btn active" data-tab="carga">Carga y reparto</button>
       <button class="tab-btn" data-tab="estado">Estado cilindros</button>
-      <button class="tab-btn" data-tab="prioridad">PRIORIDAD</button>
+      <button class="tab-btn" data-tab="valvulas">Válvulas</button>
     </nav>
 
     <!-- TAB CARGA -->
@@ -737,8 +546,9 @@
       <section class="pasos">
         <div><strong>PASO 1:</strong> Cargar cantidad de cilindros de cada taller.</div>
         <div><strong>PASO 2:</strong> Elegir fletero en cada taller (Agustín / Nano / Rodrigo / Joaquín).</div>
-        <div><strong>PASO 3:</strong> Observaciones si hace falta.</div>
-        <div><strong>PASO 4:</strong> En FLETEROS elegís el nombre, acomodás el orden con las flechas y desde ahí imprimís.</div>
+        <div><strong>PASO 3:</strong> Marcar <strong>Sin válvula</strong> si ese taller NO aporta válvulas (todas sus PH del día).</div>
+        <div><strong>PASO 4:</strong> Observaciones si hace falta.</div>
+        <div><strong>PASO 5:</strong> En FLETEROS elegís el nombre, acomodás el orden con las flechas y desde ahí imprimís.</div>
       </section>
 
       <section class="resumen">
@@ -788,6 +598,7 @@
                     <th class="col-taller">Taller</th>
                     <th class="col-fletero">Fletero</th>
                     <th class="col-cant">Cantidad</th>
+                    <th class="col-cant">Sin válvula</th>
                     <th class="col-obs">Observaciones</th>
                   </tr>
                 </thead>
@@ -816,6 +627,7 @@
                     <th class="col-taller">Taller</th>
                     <th class="col-fletero">Fletero</th>
                     <th class="col-cant">Cantidad</th>
+                    <th class="col-cant">Sin válvula</th>
                     <th class="col-obs">Observaciones</th>
                   </tr>
                 </thead>
@@ -844,6 +656,7 @@
                     <th class="col-taller">Taller</th>
                     <th class="col-fletero">Fletero</th>
                     <th class="col-cant">Cantidad</th>
+                    <th class="col-cant">Sin válvula</th>
                     <th class="col-obs">Observaciones</th>
                   </tr>
                 </thead>
@@ -862,11 +675,11 @@
         <br>
         <span class="estado-tag">• En retiro (gris):</span> cilindros todavía en taller / en viaje.
         <br>
-        <span class="estado-tag">• Proceso (amarillo):</span> cilindros en CRPC (prueba, armado, etc.).
+        <span class="estado-tag">• Proceso (amarillo):</span> cilindros en CRPC.
         <br>
         <span class="estado-tag">• Listo (azul):</span> cilindros terminados para entregar.
         <br>
-        <span class="estado-tag">• Entregado (verde):</span> cilindros ya devueltos al taller / cliente.
+        <span class="estado-tag">• Entregado (verde):</span> cilindros ya devueltos.
       </section>
 
       <section class="estado-resumen">
@@ -922,41 +735,92 @@
       </div>
     </section>
 
-    <!-- TAB PRIORIDAD -->
-    <section id="tab-prioridad" class="tab-panel">
+    <!-- TAB VÁLVULAS (CHECKLIST IMPRESO) -->
+    <section id="tab-valvulas" class="tab-panel">
       <section class="estado-info">
-        Marcá qué talleres son prioritarios para el banco.
-        Solo se muestran talleres con cilindros cargados (cantidad &gt; 0).
-        Después podés armar el orden e imprimir la lista de prioridad.
+        Checklist de válvulas para depósito. Se genera con los PH cargados.
+        <br>
+        Regla: si un taller está marcado como <strong>Sin válvula</strong>, ese taller suma 0 válvulas.
       </section>
 
-      <section class="fleteros-actions">
-        <span class="fleteros-title">Prioridad</span>
-        <span style="font-size:0.85rem;color:var(--texto-suave);">
-          Tildá los talleres prioritarios. Luego usá el botón para ordenar e imprimir.
-        </span>
-        <button id="btn-prioridad-orden" class="btn-fletero">Ordenar / Imprimir prioridad</button>
+      <section class="estado-resumen">
+        <div class="estado-res-card">
+          <div class="estado-res-label">Cilindros cargados</div>
+          <div class="estado-res-value" id="valv-cil">0</div>
+        </div>
+        <div class="estado-res-card">
+          <div class="estado-res-label">Talleres sin válvula</div>
+          <div class="estado-res-value" id="valv-sin">0</div>
+        </div>
+        <div class="estado-res-card">
+          <div class="estado-res-label">Válvulas a contar (físico)</div>
+          <div class="estado-res-value" id="valv-esp">0</div>
+        </div>
       </section>
 
-      <div class="tabla-wrap">
+      <section class="fleteros-actions" style="justify-content:space-between;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+          <span class="fleteros-title">Impresión</span>
+
+          <div style="display:flex;align-items:center;gap:8px;font-weight:700;color:var(--rojo-osc);">
+            Fecha:
+            <span id="valv-fecha" style="display:inline-block;min-width:140px;padding:5px 8px;border-radius:6px;border:1px solid #cccccc;height:32px;line-height:20px;background:#fff;"></span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;font-weight:700;color:var(--rojo-osc);">
+            Controló:
+            <input id="valv-responsable" type="text" placeholder=""
+              style="height:32px;padding:5px 8px;border-radius:6px;border:1px solid #cccccc;min-width:240px;font-size:0.9rem;">
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+          <button id="btn-valv-checklist" class="btn-fletero">Generar / Imprimir</button>
+          <span style="font-size:0.85rem;color:var(--texto-suave);">Imprime solo esta pestaña.</span>
+        </div>
+      </section>
+
+      <section class="estado-info" style="margin-top:8px;">
+        <strong>Checklist de recepción (válvulas a contar físicamente):</strong>
+      </section>
+
+      <div class="tabla-wrap" style="margin-bottom:10px;">
         <table>
           <thead>
             <tr>
-              <th class="col-taller">Taller</th>
-              <th>Vuelta</th>
-              <th class="col-fletero">Fletero</th>
-              <th class="col-cant">Cant.</th>
-              <th>Prioritario</th>
-              <th class="col-obs">Observaciones</th>
+              <th style="width:40px;">#</th>
+              <th style="width:70px;">Vuelta</th>
+              <th>Taller</th>
+              <th style="width:90px;text-align:right;">Válvulas</th>
+              <th style="width:110px;">Recibidas</th>
+              <th>Obs</th>
             </tr>
           </thead>
-          <tbody id="tbody-prioridad"></tbody>
+          <tbody id="tbody-valv-checklist"></tbody>
+        </table>
+      </div>
+
+      <section class="estado-info" style="margin-top:10px;">
+        <strong>Talleres que mandaron cilindro SIN válvula (marcados “Sin válvula”):</strong>
+      </section>
+
+      <div class="tabla-wrap" style="margin-bottom:10px;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:40px;">#</th>
+              <th style="width:70px;">Vuelta</th>
+              <th>Taller</th>
+              <th style="width:110px;text-align:right;">PH sin válvula</th>
+              <th>Obs</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-valv-sin"></tbody>
         </table>
       </div>
     </section>
-  </div>
 
-  <!-- PANEL ORDEN / IMPRESIÓN -->
+<!-- PANEL ORDEN / IMPRESIÓN (FLETEROS) -->
   <div id="orden-overlay" class="orden-overlay">
     <div class="orden-card">
       <div class="orden-header">
@@ -1014,9 +878,8 @@
 
     const app = initializeApp(firebaseConfig);
 
-    // AUTH ANÓNIMO (NECESARIO SI TUS REGLAS PIDEN request.auth != null)
+    // AUTH ANÓNIMO
     const auth = getAuth(app);
-
     const db = getFirestore(app);
     const colTalleres = collection(db, "talleres_reparto");
 
@@ -1028,84 +891,54 @@
     }
 
     const ordenManual = {
-      "minuto-gnc":1,
-      "silvana-calera":2,
-      "calera-torres-gnc":3,
-      "zico":4,
-      "colon-gnc":5,
-      "tabach-gnc":6,
-      "franco-alta-gracia":7,
-      "servincor":8,
-      "bruno-f":9,
-      "porto-alta-gracia":10,
-      "brochero-gnc":11,
-      "valparaiso-gnc":12,
-      "canovas":13,
-      "malvinas-gnc":14,
-      "genesis-gnc":15,
-      "alem":16,
-      "cars":17,
-      "forteza-gnc":18,
-      "enero-gas":19,
-      "pepe":20,
-      "san-francisco-gnc":21,
-      "genovesio":22,
-      "gnc-giordano":23,
-      "tecno-gnc":24,
-      "marcos-gnc":25,
-      "franco-cba":26,
-      "franc-villa-dolores":27,
-      "leal":28,
-      "misiti":29,
-      "enjom":30,
-      "alemanes":31,
-      "acosta":32,
-      "ceriani":33
+      "minuto-gnc":1,"silvana-calera":2,"calera-torres-gnc":3,"zico":4,"colon-gnc":5,"tabach-gnc":6,"franco-alta-gracia":7,"servincor":8,"bruno-f":9,
+      "porto-alta-gracia":10,"brochero-gnc":11,"valparaiso-gnc":12,"canovas":13,"malvinas-gnc":14,"genesis-gnc":15,"alem":16,"cars":17,"forteza-gnc":18,
+      "enero-gas":19,"pepe":20,"san-francisco-gnc":21,"genovesio":22,"gnc-giordano":23,"tecno-gnc":24,"marcos-gnc":25,"franco-cba":26,"franc-villa-dolores":27,
+      "leal":28,"misiti":29,"enjom":30,"alemanes":31,"acosta":32,"ceriani":33
     };
 
     const defaultTalleres = [
-      { id: "minuto-gnc", nombre: "Minuto GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "calera-torres-gnc", nombre: "Calera Torres", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "silvana-calera", nombre: "Calera Silvana", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "zico", nombre: "Zico", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "colon-gnc", nombre: "Colón GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "tabach-gnc", nombre: "Tabach GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "franco-alta-gracia", nombre: "Franco Alta Gracia", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "servincor", nombre: "Servincor", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "bruno-f", nombre: "Bruno F", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "porto-alta-gracia", nombre: "Porto Alta Gracia", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "brochero-gnc", nombre: "Brochero GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "valparaiso-gnc", nombre: "Valparaíso GNC", vuelta: 1, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "minuto-gnc", nombre: "Minuto GNC", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "calera-torres-gnc", nombre: "Calera Torres", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "silvana-calera", nombre: "Calera Silvana", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "zico", nombre: "Zico", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "colon-gnc", nombre: "Colón GNC", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "tabach-gnc", nombre: "Tabach GNC", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "franco-alta-gracia", nombre: "Franco Alta Gracia", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "servincor", nombre: "Servincor", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "bruno-f", nombre: "Bruno F", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "porto-alta-gracia", nombre: "Porto Alta Gracia", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "brochero-gnc", nombre: "Brochero GNC", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "valparaiso-gnc", nombre: "Valparaíso GNC", vuelta: 1, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
 
-      { id: "canovas", nombre: "Cánovas", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "malvinas-gnc", nombre: "Malvinas GNC", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "genesis-gnc", nombre: "Génesis GNC", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "alem", nombre: "ALEM", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "cars", nombre: "Cars", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "forteza-gnc", nombre: "Forteza GNC", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "enero-gas", nombre: "Enero Gas", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "pepe", nombre: "Pepe", vuelta: 2, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
+      { id: "canovas", nombre: "Cánovas", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "malvinas-gnc", nombre: "Malvinas GNC", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "genesis-gnc", nombre: "Génesis GNC", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "alem", nombre: "ALEM", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "cars", nombre: "Cars", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "forteza-gnc", nombre: "Forteza GNC", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "enero-gas", nombre: "Enero Gas", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "pepe", nombre: "Pepe", vuelta: 2, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
 
-      { id: "san-francisco-gnc", nombre: "Sola", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "genovesio", nombre: "Genovesio - TTE EL GRINGO - RINCON 1450", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "gnc-giordano", nombre: "GNC Giordano - TTE MICROCARGAS - F.FRIAS 924", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "tecno-gnc", nombre: "Tecno GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "marcos-gnc", nombre: "Marcos GNC", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "franco-cba", nombre: "Franco cba", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "franc-villa-dolores", nombre: "Franc Villa Dolores", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "leal", nombre: "Leal", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "misiti", nombre: "Misiti", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "enjom", nombre: "Enjom", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "alemanes", nombre: "Alemanes", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "acosta", nombre: "Rosso - TTE MICROCARGAS - F.FRIAS 924", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" },
-      { id: "ceriani", nombre: "CERIANI", vuelta: 3, cantidad: 0, obs: "", fletero:"", estado:"retiro" }
+      { id: "san-francisco-gnc", nombre: "Sola", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "genovesio", nombre: "Genovesio - TTE EL GRINGO - RINCON 1450", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "gnc-giordano", nombre: "GNC Giordano - TTE MICROCARGAS - F.FRIAS 924", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "tecno-gnc", nombre: "Tecno GNC", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "marcos-gnc", nombre: "Marcos GNC", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "franco-cba", nombre: "Franco cba", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "franc-villa-dolores", nombre: "Franc Villa Dolores", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "leal", nombre: "Leal", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "misiti", nombre: "Misiti", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "enjom", nombre: "Enjom", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "alemanes", nombre: "Alemanes", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "acosta", nombre: "Rosso - TTE MICROCARGAS - F.FRIAS 924", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" },
+      { id: "ceriani", nombre: "CERIANI", vuelta: 3, cantidad: 0, sinValvulaAll:false, obs: "", fletero:"", estado:"retiro" }
     ];
 
     const tbodyV1 = document.getElementById("tbody-v1");
     const tbodyV2 = document.getElementById("tbody-v2");
     const tbodyV3 = document.getElementById("tbody-v3");
     const tbodyEstado = document.getElementById("tbody-estado");
-    const tbodyPrioridad = document.getElementById("tbody-prioridad");
 
     const cilTotalGeneralEl = document.getElementById("cil-total-general");
     const cilV1ResumenEl = document.getElementById("cil-v1");
@@ -1127,7 +960,14 @@
     const btnEstadoTodosListo = document.getElementById("btn-estado-todos-listo");
     const btnEstadoTodosEntregado = document.getElementById("btn-estado-todos-entregado");
 
-    const btnPrioridadOrden = document.getElementById("btn-prioridad-orden");
+    const btnValvChecklist = document.getElementById("btn-valv-checklist");
+    const tbodyValvChecklist = document.getElementById("tbody-valv-checklist");
+    const tbodyValvSin = document.getElementById("tbody-valv-sin");
+    const valvResponsableInp = document.getElementById("valv-responsable");
+    const valvFechaEl = document.getElementById("valv-fecha");
+    const valvCilEl = document.getElementById("valv-cil");
+    const valvSinEl = document.getElementById("valv-sin");
+    const valvEspEl = document.getElementById("valv-esp");
 
     const ordenOverlay = document.getElementById("orden-overlay");
     const ordenFleteroNombreEl = document.getElementById("orden-fletero-nombre");
@@ -1146,6 +986,11 @@
       await updateDoc(ref, { cantidad: n });
     }
 
+    async function actualizarSinValvulaAll(id, valor){
+      const ref = doc(colTalleres, id);
+      await updateDoc(ref, { sinValvulaAll: !!valor });
+    }
+
     async function actualizarObs(id, texto){
       const ref = doc(colTalleres, id);
       await updateDoc(ref, { obs: texto });
@@ -1161,23 +1006,18 @@
       await updateDoc(ref, { estado: estado });
     }
 
-    async function actualizarPrioritario(id, valor){
-      const ref = doc(colTalleres, id);
-      await updateDoc(ref, { prioritario: !!valor });
-    }
-
     async function reiniciarDia(){
-      const ok = confirm("¿Reiniciar TODOS los datos de hoy? (cantidades, fletero, observaciones, estado, prioridad)?");
+      const ok = confirm("¿Reiniciar TODOS los datos de hoy? (cantidades, sin válvula, fletero, observaciones, estado)?");
       if(!ok) return;
       const snap = await getDocs(colTalleres);
       const batch = writeBatch(db);
       snap.forEach(d => {
         batch.update(d.ref, {
           cantidad: 0,
+          sinValvulaAll: false,
           obs: "",
           fletero: "",
-          estado: "retiro",
-          prioritario: false
+          estado: "retiro"
         });
       });
       await batch.commit();
@@ -1197,6 +1037,7 @@
       lista.forEach(t => {
         const cant = Number(t.cantidad) || 0;
         const fleteroVal = t.fletero || "";
+        const sinAll = !!t.sinValvulaAll;
 
         const tr = document.createElement("tr");
         tr.dataset.id = t.id;
@@ -1204,9 +1045,7 @@
 
         const tdTaller = document.createElement("td");
         tdTaller.className = "col-taller";
-        const nombreSpan = document.createElement("span");
-        nombreSpan.textContent = t.nombre;
-        tdTaller.appendChild(nombreSpan);
+        tdTaller.textContent = t.nombre;
         tr.appendChild(tdTaller);
 
         const tdFlet = document.createElement("td");
@@ -1235,6 +1074,15 @@
         tdCant.appendChild(inpCant);
         tr.appendChild(tdCant);
 
+        const tdSin = document.createElement("td");
+        tdSin.className = "col-cant";
+        const chkSin = document.createElement("input");
+        chkSin.type = "checkbox";
+        chkSin.checked = sinAll;
+        chkSin.title = "Si está tildado: este taller NO aporta válvulas (todas sus PH del día).";
+        tdSin.appendChild(chkSin);
+        tr.appendChild(tdSin);
+
         const tdObs = document.createElement("td");
         tdObs.className = "col-obs";
         const inpObs = document.createElement("input");
@@ -1244,20 +1092,14 @@
         tdObs.appendChild(inpObs);
         tr.appendChild(tdObs);
 
-        selF.addEventListener("change", () => {
-          actualizarFletero(t.id, selF.value);
-        });
+        selF.addEventListener("change", () => actualizarFletero(t.id, selF.value));
 
-        inpCant.addEventListener("blur", () => {
-          actualizarCantidad(t.id, inpCant.value);
-        });
-        inpCant.addEventListener("keydown", (e) => {
-          if(e.key === "Enter") inpCant.blur();
-        });
+        chkSin.addEventListener("change", () => actualizarSinValvulaAll(t.id, chkSin.checked));
 
-        inpObs.addEventListener("blur", () => {
-          actualizarObs(t.id, inpObs.value.trim());
-        });
+        inpCant.addEventListener("blur", () => actualizarCantidad(t.id, inpCant.value));
+        inpCant.addEventListener("keydown", (e) => { if(e.key === "Enter") inpCant.blur(); });
+
+        inpObs.addEventListener("blur", () => actualizarObs(t.id, inpObs.value.trim()));
 
         tbody.appendChild(tr);
       });
@@ -1283,10 +1125,8 @@
       }
 
       lista.sort((a,b) => {
-        const ea = a.estado || "retiro";
-        const eb = b.estado || "retiro";
-        const pa = pesoEstado(ea);
-        const pb = pesoEstado(eb);
+        const pa = pesoEstado(a.estado || "retiro");
+        const pb = pesoEstado(b.estado || "retiro");
         if(pa !== pb) return pa - pb;
         if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
         const oa = ordenManual[a.id] ?? 9999;
@@ -1347,9 +1187,7 @@
           <option value="entregado">Entregado</option>
         `;
         selEstado.value = estadoVal;
-        selEstado.addEventListener("change", () => {
-          actualizarEstado(t.id, selEstado.value);
-        });
+        selEstado.addEventListener("change", () => actualizarEstado(t.id, selEstado.value));
         tdEstado.appendChild(selEstado);
         tr.appendChild(tdEstado);
 
@@ -1357,61 +1195,110 @@
       });
     }
 
-    function renderPrioridad(){
-      if(!tbodyPrioridad) return;
-      tbodyPrioridad.innerHTML = "";
+    function calcularValvulasEsperadasPorTaller(t){
+      const cant = Number(t.cantidad) || 0;
+      if(t.sinValvulaAll) return 0;
+      return cant;
+    }
 
-      let lista = talleres
+    function renderValvulasResumen(){
+      const cil = talleres.reduce((acc,t)=> acc + (Number(t.cantidad)||0), 0);
+      const sinCount = talleres.filter(t => (Number(t.cantidad)||0) > 0 && !!t.sinValvulaAll).length;
+      const esp = talleres.reduce((acc,t)=> acc + calcularValvulasEsperadasPorTaller(t), 0);
+
+      if(valvCilEl) valvCilEl.textContent = cil;
+      if(valvSinEl) valvSinEl.textContent = sinCount;
+      if(valvEspEl) valvEspEl.textContent = esp;
+    }
+
+    function renderValvulasSin(){
+      if(!tbodyValvSin) return;
+      tbodyValvSin.innerHTML = "";
+
+      const lista = talleres
         .filter(t => (Number(t.cantidad) || 0) > 0)
+        .filter(t => !!t.sinValvulaAll)
         .sort((a,b) => {
-          if(!!a.prioritario !== !!b.prioritario){
-            return a.prioritario ? -1 : 1;
-          }
           if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
+          const oa = ordenManual[a.id] ?? 9999;
+          const ob = ordenManual[b.id] ?? 9999;
+          if(oa !== ob) return oa - ob;
           return a.nombre.localeCompare(b.nombre,"es");
         });
 
-      lista.forEach(t => {
-        const c = Number(t.cantidad) || 0;
-        const fle = t.fletero || "";
+      lista.forEach((t, idx) => {
         const tr = document.createElement("tr");
-        if(t.prioritario) tr.classList.add("prioridad-row");
 
-        const tdTaller = document.createElement("td");
-        tdTaller.className = "col-taller";
-        tdTaller.textContent = t.nombre;
-        tr.appendChild(tdTaller);
+        const tdN = document.createElement("td");
+        tdN.textContent = idx + 1;
+        tr.appendChild(tdN);
 
-        const tdVuelta = document.createElement("td");
-        tdVuelta.textContent = "V" + (t.vuelta || "?");
-        tr.appendChild(tdVuelta);
+        const tdV = document.createElement("td");
+        tdV.textContent = "V" + (t.vuelta || "?");
+        tr.appendChild(tdV);
 
-        const tdFle = document.createElement("td");
-        tdFle.className = "col-fletero";
-        tdFle.textContent = fle || "-";
-        tr.appendChild(tdFle);
+        const tdT = document.createElement("td");
+        tdT.textContent = t.nombre;
+        tr.appendChild(tdT);
 
-        const tdCant = document.createElement("td");
-        tdCant.className = "col-cant";
-        tdCant.textContent = c;
-        tr.appendChild(tdCant);
+        const tdC = document.createElement("td");
+        tdC.style.textAlign = "right";
+        tdC.textContent = Number(t.cantidad) || 0;
+        tr.appendChild(tdC);
 
-        const tdPri = document.createElement("td");
-        const chk = document.createElement("input");
-        chk.type = "checkbox";
-        chk.checked = !!t.prioritario;
-        chk.addEventListener("change", () => {
-          actualizarPrioritario(t.id, chk.checked);
+        const tdO = document.createElement("td");
+        tdO.textContent = t.obs || "";
+        tr.appendChild(tdO);
+
+        tbodyValvSin.appendChild(tr);
+      });
+    }
+
+    function renderValvulasChecklist(){
+      if(!tbodyValvChecklist) return;
+      tbodyValvChecklist.innerHTML = "";
+
+      const lista = talleres
+        .filter(t => (Number(t.cantidad) || 0) > 0)
+        .map(t => ({ ...t, valvulas: calcularValvulasEsperadasPorTaller(t) }))
+        .filter(t => t.valvulas > 0)
+        .sort((a,b) => {
+          if(a.vuelta !== b.vuelta) return a.vuelta - b.vuelta;
+          const oa = ordenManual[a.id] ?? 9999;
+          const ob = ordenManual[b.id] ?? 9999;
+          if(oa !== ob) return oa - ob;
+          return a.nombre.localeCompare(b.nombre,"es");
         });
-        tdPri.appendChild(chk);
-        tr.appendChild(tdPri);
 
-        const tdObs = document.createElement("td");
-        tdObs.className = "col-obs";
-        tdObs.textContent = t.obs || "";
-        tr.appendChild(tdObs);
+      lista.forEach((t, idx) => {
+        const tr = document.createElement("tr");
 
-        tbodyPrioridad.appendChild(tr);
+        const tdN = document.createElement("td");
+        tdN.textContent = idx + 1;
+        tr.appendChild(tdN);
+
+        const tdV = document.createElement("td");
+        tdV.textContent = "V" + (t.vuelta || "?");
+        tr.appendChild(tdV);
+
+        const tdT = document.createElement("td");
+        tdT.textContent = t.nombre;
+        tr.appendChild(tdT);
+
+        const tdC = document.createElement("td");
+        tdC.style.textAlign = "right";
+        tdC.textContent = t.valvulas;
+        tr.appendChild(tdC);
+
+        const tdR = document.createElement("td");
+        tdR.innerHTML = `<span style="font-size:18px;">☐</span>`;
+        tr.appendChild(tdR);
+
+        const tdO = document.createElement("td");
+        tdO.textContent = t.obs || "";
+        tr.appendChild(tdO);
+
+        tbodyValvChecklist.appendChild(tr);
       });
     }
 
@@ -1420,7 +1307,6 @@
       renderVuelta(2, tbodyV2);
       renderVuelta(3, tbodyV3);
       renderEstado();
-      renderPrioridad();
 
       let total = 0, v1 = 0, v2 = 0, v3 = 0;
 
@@ -1440,6 +1326,10 @@
       cilV1CardEl.textContent = v1;
       cilV2CardEl.textContent = v2;
       cilV3CardEl.textContent = v3;
+
+      renderValvulasResumen();
+      renderValvulasSin();
+      renderValvulasChecklist();
     }
 
     async function cambiarEstadoMasivo(nuevoEstado){
@@ -1532,7 +1422,7 @@
 
         const fila = document.querySelector('tr[data-id="' + t.id + '"]');
         if(fila){
-          const inpCant = fila.querySelector('.input-num');
+          const inpCant = fila.querySelectorAll('.input-num')[0]; // cantidad
           const inpObs = fila.querySelector('.input-text');
           if(inpCant){
             const v = parseInt(inpCant.value, 10);
@@ -1560,49 +1450,6 @@
 
       panelItems = seleccion;
       ordenFleteroNombreEl.textContent = "Fletero " + fleteroClave;
-      renderOrdenPanel();
-
-      ordenOverlay.style.display = "flex";
-      document.body.classList.add("orden-open");
-    }
-
-    function abrirOrdenPrioridad(){
-      const seleccion = [];
-      talleres.forEach(t => {
-        if(!t.prioritario) return;
-        let cantidad = Number(t.cantidad) || 0;
-        let obs = t.obs || "";
-
-        const fila = document.querySelector('tr[data-id="' + t.id + '"]');
-        if(fila){
-          const inpCant = fila.querySelector('.input-num');
-          const inpObs = fila.querySelector('.input-text');
-          if(inpCant){
-            const v = parseInt(inpCant.value, 10);
-            if(!isNaN(v) && v >= 0) cantidad = v;
-          }
-          if(inpObs){
-            obs = inpObs.value || "";
-          }
-        }
-
-        if(cantidad > 0 || (obs && obs.trim() !== "")){
-          seleccion.push({
-            taller: t.nombre,
-            vuelta: t.vuelta,
-            cantidad,
-            obs
-          });
-        }
-      });
-
-      if(seleccion.length === 0){
-        alert("No hay talleres marcados como prioritarios con cilindros u observaciones para imprimir.");
-        return;
-      }
-
-      panelItems = seleccion;
-      ordenFleteroNombreEl.textContent = "PRIORIDAD";
       renderOrdenPanel();
 
       ordenOverlay.style.display = "flex";
@@ -1641,19 +1488,81 @@
       });
     }
 
-    function initTabs(){
+    function switchToTab(tab){
       const tabButtons = document.querySelectorAll(".tab-btn");
       const tabPanels = document.querySelectorAll(".tab-panel");
+      tabButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.tab === tab));
+      tabPanels.forEach(p => p.classList.toggle("active", p.id === ("tab-" + tab)));
+    }
 
+    function initTabs(){
+      const tabButtons = document.querySelectorAll(".tab-btn");
       tabButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const tab = btn.dataset.tab;
-          tabButtons.forEach(b => b.classList.toggle("active", b === btn));
-          tabPanels.forEach(p => {
-            const id = "tab-" + tab;
-            p.classList.toggle("active", p.id === id);
-          });
+        btn.addEventListener("click", () => switchToTab(btn.dataset.tab));
+      });
+    }
+
+    function formatFechaAR(d){
+      const dd = String(d.getDate()).padStart(2,"0");
+      const mm = String(d.getMonth()+1).padStart(2,"0");
+      const yyyy = d.getFullYear();
+      return dd + "/" + mm + "/" + yyyy;
+    }
+
+    function initImpresionValvulas(){
+      if(valvResponsableInp){
+        const saved = localStorage.getItem("crpc_valv_responsable") || "";
+        valvResponsableInp.value = saved;
+        valvResponsableInp.addEventListener("blur", () => {
+          localStorage.setItem("crpc_valv_responsable", (valvResponsableInp.value || "").trim());
         });
+      }
+
+      if(valvFechaEl){
+        valvFechaEl.textContent = formatFechaAR(new Date());
+      }
+
+      if(!btnValvChecklist) return;
+
+      // Limpieza al terminar de imprimir
+      window.addEventListener("afterprint", () => {
+        document.body.classList.remove("print-valvulas");
+        // Restaurar nombre en pantalla (no se imprime)
+        if(valvResponsableInp){
+          const saved = localStorage.getItem("crpc_valv_responsable") || "";
+          valvResponsableInp.value = saved;
+        }
+      });
+
+      btnValvChecklist.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if(valvResponsableInp){
+          localStorage.setItem("crpc_valv_responsable", (valvResponsableInp.value || "").trim());
+        }
+
+        // Genera checklist con datos actuales
+        renderValvulasResumen();
+        renderValvulasSin();
+        renderValvulasChecklist();
+
+        // Asegura que se vea la pestaña de válvulas
+        switchToTab("valvulas");
+
+        // Solo imprimir esta pestaña
+        document.body.classList.add("print-valvulas");
+
+        // Fecha (se imprime)
+        if(valvFechaEl){
+          valvFechaEl.textContent = formatFechaAR(new Date());
+        }
+
+        // En impresión, el campo "Controló" debe salir en blanco para completar a mano
+        if(valvResponsableInp){
+          valvResponsableInp.value = "";
+        }
+
+        window.print();
       });
     }
 
@@ -1669,6 +1578,7 @@
         const arr = [];
         snap2.forEach(d => {
           const data = d.data();
+
           let nombre = data.nombre || "";
           if(d.id === "acosta") nombre = "Rosso - TTE MICROCARGAS - F.FRIAS 924";
           if(d.id === "silvana-calera") nombre = "Calera Silvana";
@@ -1689,10 +1599,10 @@
             nombre,
             vuelta: data.vuelta ?? 1,
             cantidad: data.cantidad ?? 0,
+            sinValvulaAll: !!data.sinValvulaAll,
             obs: data.obs || "",
             fletero: fleFallback || "",
-            estado: data.estado || "retiro",
-            prioritario: !!data.prioritario
+            estado: data.estado || "retiro"
           });
         });
         talleres = arr;
@@ -1701,9 +1611,7 @@
 
       if(btnReset) btnReset.addEventListener("click", reiniciarDia);
       if(ordenCerrarBtn) ordenCerrarBtn.addEventListener("click", cerrarOrden);
-      if(ordenImprimirBtn) ordenImprimirBtn.addEventListener("click", () => {
-        window.print();
-      });
+      if(ordenImprimirBtn) ordenImprimirBtn.addEventListener("click", () => window.print());
 
       if(estadoFiltroFletero){
         estadoFiltroFletero.addEventListener("change", () => {
@@ -1712,32 +1620,14 @@
         });
       }
 
-      if(btnEstadoTodosProceso){
-        btnEstadoTodosProceso.addEventListener("click", () => {
-          cambiarEstadoMasivo("proceso");
-        });
-      }
-      if(btnEstadoTodosListo){
-        btnEstadoTodosListo.addEventListener("click", () => {
-          cambiarEstadoMasivo("listo");
-        });
-      }
-      if(btnEstadoTodosEntregado){
-        btnEstadoTodosEntregado.addEventListener("click", () => {
-          cambiarEstadoMasivo("entregado");
-        });
-      }
-
-      if(btnPrioridadOrden){
-        btnPrioridadOrden.addEventListener("click", (e) => {
-          e.preventDefault();
-          abrirOrdenPrioridad();
-        });
-      }
+      if(btnEstadoTodosProceso) btnEstadoTodosProceso.addEventListener("click", () => cambiarEstadoMasivo("proceso"));
+      if(btnEstadoTodosListo) btnEstadoTodosListo.addEventListener("click", () => cambiarEstadoMasivo("listo"));
+      if(btnEstadoTodosEntregado) btnEstadoTodosEntregado.addEventListener("click", () => cambiarEstadoMasivo("entregado"));
 
       initBotonesFletero();
       initCollapsibles();
       initTabs();
+      initImpresionValvulas();
     }
 
     async function boot(){
